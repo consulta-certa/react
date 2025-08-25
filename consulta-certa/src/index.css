@@ -1,0 +1,11 @@
+/* fonte título*/
+@font-face {
+    font-family: 'Lexend';
+    src: url('./assets/fonts/Lexend/Lexend-VariableFont_wght.ttf');
+}
+
+/* fonte corpo*/
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
+}
