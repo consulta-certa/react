@@ -13,7 +13,9 @@ import Home from "./routes/Home";
 import Informacoes from "./routes/Informacoes";
 import Lembretes from "./routes/Lembretes";
 import Perfil from "./routes/Perfil";
+import Politicas from "./routes/Politicas";
 import QuemSomos from "./routes/QuemSomos";
+import Termos from "./routes/Termos";
 
 const router = createBrowserRouter(
     [{
@@ -30,7 +32,9 @@ const router = createBrowserRouter(
             { path: '/informacoes', element: <Informacoes/>},
             { path: '/marcar-lembrete/:id', element: <Lembretes/>},
             { path: '/perfil/:id', element: <Perfil/>},
-            { path: '/quem-somos', element: <QuemSomos/>}
+            { path: '/politicas-de-privacidade', element: <Politicas/>},
+            { path: '/quem-somos', element: <QuemSomos/>},
+            { path: '/termos-de-uso', element: <Termos/>}
         ] 
     }]
 )
