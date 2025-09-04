@@ -1,5 +1,5 @@
 /* Tailwind CSS */
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -22,11 +22,19 @@
 /* fonte título*/
 @font-face {
     font-family: 'Lexend';
-    src: url('./assets/fonts/Lexend/Lexend-VariableFont_wght.ttf');
+    src: url('/fonts/Lexend/Lexend-VariableFont_wght.ttf');
 }
 
 /* fonte corpo*/
 @font-face {
     font-family: 'Roboto';
-    src: url('./assets/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
+    src: url('/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
+}
+
+@theme {
+  --color-cc-azul: #1E77D0;
+}
+
+:root {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
