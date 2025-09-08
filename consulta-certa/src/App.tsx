@@ -4,7 +4,7 @@ import Header from "./components/Header/Header"
 
 function App() {
     return (
-        <div id="App">
+        <div id="App" className="flex flex-col justify-between items-center min-h-[100vh]">
             <Header/>
             <Outlet/>
             <Footer/>
