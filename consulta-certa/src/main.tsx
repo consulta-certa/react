@@ -30,7 +30,7 @@ const router = createBrowserRouter(
             { path: '/guias/guia', element: <Guia/>},
             { path: '/', element: <Home/>},
             { path: '/informacoes', element: <Informacoes/>},
-            { path: '/marcar-lembrete/:id', element: <Lembretes/>},
+            { path: '/lembretes', element: <Lembretes/>},
             { path: '/perfil/:id', element: <Perfil/>},
             { path: '/politicas-de-privacidade', element: <Politicas/>},
             { path: '/quem-somos', element: <QuemSomos/>},

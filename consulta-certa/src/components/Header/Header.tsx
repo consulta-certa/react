@@ -1,41 +1,75 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
+import logo from '../../assets/images/logo.svg'
+import logoHC from '../../assets/images/logo_hc.svg'
 
 function Header() {
     return (
-        <header>
-            <div className="logos">
+        <header className="flex items-center justify-between w-full shadow-md py-[2vh] px-[5vw]">
+            <div className="flex gap-[1vw]">
                 <a href="https://www.hc.fm.usp.br/hc/portal/" target="_">
-                    <img src="" alt="" className="logo" />
+                    <img src={logoHC} alt="Logo do HC" className="h-[8vh]" />
                 </a>
                 <Link to="/">
-                    <img src="" alt="" className="logo" />
+                    <img src={logo} alt="Logo da página Consulta Certa" className="h-[8vh]" />
                 </Link>
             </div>
             <nav>
-                <ul>
+                <ul className="flex items-center justify-center gap-[1vw]">
                     <li>
-                        <Link to='/'>Início</Link>
+                        <NavLink to='/' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Início</NavLink>
                     </li>
                     <li>
-                        <Link to='/guias'>Guia</Link>
+                        <NavLink to='/guias' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Guia</NavLink>
                     </li>
                     <li>
-                        <Link to='/ajuda'>Ajuda</Link>
+                        <NavLink to='/ajuda' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Ajuda</NavLink>
                     </li>
                     <li>
-                        <Link to='/quem-somos'>Quem somos</Link>
+                        <NavLink to='/quem-somos' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Quem somos</NavLink>
                     </li>
                     <li>
-                        <Link to='/contato'>Contato</Link>
+                        <NavLink to='/contato' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Contato</NavLink>
                     </li>
                     <li>
-                        <Link to='/avaliar-teleconsulta'>Avaliações</Link>
+                        <NavLink to='/avaliar-teleconsulta' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Avaliações</NavLink>
                     </li>
                     <li>
-                        <Link to='/marcar-lembrete/:id'>Lembretes</Link>
+                        <NavLink to='/lembretes' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Lembretes</NavLink>
                     </li>
                     <li>
-                        <Link to='/perfil/:id'>Perfil</Link>
+                        <NavLink to='/perfil/:id' className={({ isActive }) =>
+                            isActive
+                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
+                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                        }>Perfil</NavLink>
                     </li>
                 </ul>
             </nav>
