@@ -1,23 +1,22 @@
 function Guia() {
-  return (
-    <main>
+    return(
+        <main>
             <section className="titulo">
                 <h1>Guias</h1>
-                <p className="subtitulo">Portal do Paciente HC</p>
-                <p>Agora escolha o guia que precisar</p>
+                <p>Com o que podemos te ajudar?</p>
             </section>
-            <nav className="opcoes">
-                <a href="./guia1.html">
+            <nav className="categorias">
+                <a href="./guiaHC.html">
                     <img src="../assets/images/banner_hero.png" alt="Imagem do Portal do Paciente HC"/>
-                    <p>Fazer login/entrada no site</p>
+                    <p>Portal do Paciente</p>
                 </a>
-                <a href="#">
+                <a href="./guiaTeleconsulta.html">
                     <img src="../assets/images/banner_hero.png" alt="Imagem de um atendimento por teleconsulta"/>
-                    <p>Baixar aplicativo Portal do Paciente</p>
+                    <p>Teleconsultas</p>
                 </a>
             </nav>
-        </main>
-  )
+        </main> 
+    )
 }
 
 export default Guia
