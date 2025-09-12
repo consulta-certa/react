@@ -89,7 +89,7 @@ function QuemSomos() {
         </ul>
       </section>
     </main>
-  );
+  )
 }
 
-export default QuemSomos;
+export default QuemSomos
