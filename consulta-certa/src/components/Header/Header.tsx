@@ -1,6 +1,16 @@
-import { Link, NavLink } from "react-router-dom"
-import logo from '../../assets/images/logo.svg'
-import logoHC from '../../assets/images/logo_hc.svg'
+import { Link } from "react-router-dom";
+import logo from '../../assets/images/logo.svg';
+import logoHC from '../../assets/images/logo_hc.svg';
+import NavElement from "./NavElement";
+
+import { AiFillHome } from "react-icons/ai";
+import { BiSolidBookReader } from "react-icons/bi";
+import { MdLiveHelp } from "react-icons/md";
+import { RiTeamFill } from "react-icons/ri";
+import { IoMdChatboxes } from "react-icons/io";
+import { MdRateReview } from "react-icons/md";
+import { TbBellRingingFilled } from "react-icons/tb";
+import { IoPersonCircle } from "react-icons/io5";
 
 function Header() {
     return (
@@ -13,64 +23,16 @@ function Header() {
                     <img src={logo} alt="Logo da página Consulta Certa" className="h-[8vh]" />
                 </Link>
             </div>
-            <nav>
+            <nav className="max-md:fixed max-md:bottom-0 max-md:left-0 max-md:w-full bg-white">
                 <ul className="flex items-center justify-center gap-[1vw]">
-                    <li>
-                        <NavLink to='/' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Início</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/guias' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Guia</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/ajuda' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Ajuda</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/quem-somos' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Quem somos</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/contato' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Contato</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/avaliar-teleconsulta' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Avaliações</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/lembretes' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Lembretes</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to='/perfil/:id' className={({ isActive }) =>
-                            isActive
-                                ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out'
-                                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
-                        }>Perfil</NavLink>
-                    </li>
+                    <NavElement path="/" icon={AiFillHome} label="Início"/>
+                    <NavElement path="/guias" icon={BiSolidBookReader} label="Guias"/>
+                    <NavElement path="/ajuda" icon={MdLiveHelp} label="Ajuda"/>
+                    <NavElement path="/quem-somos" icon={RiTeamFill} label="Quem somos"/>
+                    <NavElement path="/contato" icon={IoMdChatboxes} label="Contato"/>
+                    <NavElement path="/avaliar-teleconsulta" icon={MdRateReview} label="Avaliações"/>
+                    <NavElement path="/lembretes" icon={TbBellRingingFilled} label="Lembretes"/>
+                    <NavElement path="/perfil/:id" icon={IoPersonCircle} label="Perfil"/>
                 </ul>
             </nav>
         </header>
