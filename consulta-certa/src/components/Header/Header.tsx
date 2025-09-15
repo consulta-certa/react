@@ -14,17 +14,17 @@ import { IoPersonCircle } from "react-icons/io5";
 
 function Header() {
     return (
-        <header className="flex items-center justify-between w-full shadow-md py-[2vh] px-[5vw]">
+        <header className="header">
             <div className="flex gap-[1vw]">
                 <a href="https://www.hc.fm.usp.br/hc/portal/" target="_">
-                    <img src={logoHC} alt="Logo do HC" className="h-[8vh]" />
+                    <img src={logoHC} alt="Logo do HC" className="logo" />
                 </a>
                 <Link to="/">
-                    <img src={logo} alt="Logo da página Consulta Certa" className="h-[8vh]" />
+                    <img src={logo} alt="Logo da página Consulta Certa" className="logo" />
                 </Link>
             </div>
-            <nav className="max-md:fixed max-md:bottom-0 max-md:left-0 max-md:w-full bg-white">
-                <ul className="flex items-center justify-center gap-[1vw]">
+            <nav>
+                <ul>
                     <NavElement path="/" icon={AiFillHome} label="Início"/>
                     <NavElement path="/guias" icon={BiSolidBookReader} label="Guias"/>
                     <NavElement path="/ajuda" icon={MdLiveHelp} label="Ajuda"/>

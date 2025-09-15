@@ -1,24 +1,6 @@
 /* Tailwind CSS */
 @import "tailwindcss";
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
 /* fonte título*/
 @font-face {
     font-family: 'Lexend';
@@ -31,10 +13,41 @@
     src: url('/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
 }
 
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+.header {
+  @apply flex items-center justify-between w-full shadow-md py-[2vh] px-[5vw];
+  & nav {
+    @apply max-md:fixed max-md:bottom-0 max-md:left-0 max-md:w-full max-md:z-30 bg-white;
+
+    & ul {
+      @apply flex items-center justify-center gap-[1vw];
+    }
+  }
+}
+
+h1 {
+  @apply text-cc-preto
+}
+
+.logo {
+  @apply max-sm:h-[6vh] h-[8vh];
+}
+
 @theme {
   --color-cc-azul: #1E77D0;
+  --color-cc-preto: #2d2d2d;
 }
 
 :root {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  color: #4e4e4e;
 }
