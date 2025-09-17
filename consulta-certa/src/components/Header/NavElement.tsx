@@ -6,7 +6,7 @@ function NavElement(props:{path:string, icon:React.ComponentType<{ className?: s
         <NavLink to={props.path} className={({ isActive }) =>
             isActive
                 ? 'text-cc-azul font-bold transition-all duration-300 ease-in-out scale-110 translate-y-[-0.25vh]'
-                : 'text-[#2d2d2d] transition-all duration-300 ease-in-out'
+                : 'text-cc-preto transition-all duration-300 ease-in-out'
         }>
             <props.icon className='mx-auto text-2xl'/>
             {props.label}

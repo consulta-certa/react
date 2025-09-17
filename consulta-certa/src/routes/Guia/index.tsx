@@ -1,10 +1,9 @@
+import Titulo from "../../components/Titulo/Titulo"
+
 function Guia() {
     return(
         <main>
-            <section className="titulo">
-                <h1>Guias</h1>
-                <p>Com o que podemos te ajudar?</p>
-            </section>
+            <Titulo titulo="Guia"/>
             <nav className="categorias">
                 <a href="./guiaHC.html">
                     <img src="../assets/images/banner_hero.png" alt="Imagem do Portal do Paciente HC"/>

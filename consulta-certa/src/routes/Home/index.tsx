@@ -1,8 +1,10 @@
+import Titulo from "../../components/Titulo/Titulo"
+
 function Home() {
     return(
         <main>
             <section className="hero">
-                <h1>Início</h1>
+                <Titulo titulo="Início"/>
                 <section>
                     <div className="figure"></div>
                     <img src="./assets/images/banner_hero.png"
