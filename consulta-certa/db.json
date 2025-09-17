@@ -1,9 +1,27 @@
 {
+    "acompanhantes": [
+        {
+            "id_acompanhante": 1,
+            "email": "e@mail.com",
+            "telefone": "11912345678",
+            "parentesco": "parentesco",
+            "id_paciente": 1
+        }
+    ],
+    "avaliacoes": [
+        {
+            "id_avaliacao": 1,
+            "nota": 1,
+            "comentario": "comentario",
+            "data_valiacao": "01/01/2025 23:59",
+            "id_lembrete": 1 
+        }
+    ],
     "consultas": [
         {
             "id_consulta": 1,
             "especialidade": "especialidade",
-            "data_consulta": "data_consulta",
+            "data_consulta": "01/01/2025 23:59",
             "status": "status",
             "id_paciente": 1
         }
@@ -12,8 +30,8 @@
         {
             "id_contato": 1,
             "nome": "nome",
-            "telefone": "telefone",
-            "email": "email",
+            "telefone": "11912345678",
+            "email": "e@mail.com",
             "numero": "numero",
             "rua": "rua",
             "bairro": "bairro",
@@ -29,14 +47,14 @@
             "texto": "texto",
             "video": "video",
             "imagem": "imagem",
-            "data_publicacao": "data_publicacao"
+            "data_publicacao": "01/01/2025 23:59o"
         }
     ],
     "lembretes": [
         {
             "id_lembrete": 1,
             "canal_envio": "canal_envio",
-            "data_envio": "data_envio",
+            "data_envio": "01/01/2025 23:59",
             "id_consulta": 1
         }
     ],
@@ -44,8 +62,8 @@
         {
             "id_paciente": 1,
             "nome": "nome",
-            "email": "email",
-            "telefone": "telefone"
+            "email": "e@mail.com",
+            "telefone": "11912345678"
         }
     ]
 }
