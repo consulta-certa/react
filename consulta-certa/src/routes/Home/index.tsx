@@ -1,10 +1,100 @@
 import Titulo from "../../components/Titulo/Titulo"
+import Hero from '../../assets/images/carrossel-template1.png'
+import { GiHealthNormal } from "react-icons/gi"
+import HomeButton from "../../components/HomeButton/HomeButton"
+import { BiSolidBookReader } from "react-icons/bi";
+import { FaLaptopMedical } from "react-icons/fa";
+import { MdMedicalInformation } from "react-icons/md";
+import { FaUserDoctor } from "react-icons/fa6";
+import { RiSpeakAiFill } from "react-icons/ri";
+import { BsFillPinMapFill } from "react-icons/bs";
+
+import logoBID from '../../assets/images/logo_parceiro.png'
+import logoBP from '../../assets/images/logo_parceiro1.png'
+import logoUmane from '../../assets/images/logo_parceiro2.png'
+import logoSSSP from '../../assets/images/logo_parceiro3.png'
 
 function Home() {
-    return(
+    return (
+        <main>
+            <Titulo titulo="Página Inicial" />
+            <section className="flex max-md:flex-col-reverse items-center justify-between min-h-[70vh]">
+                <div className="flex flex-col items-center w-[30vw] min-w-[280px] px-[2vw]">
+                    <ul className="flex justify-center w-full overflow-x-hidden gap-[2vw]">
+                        {/* Ainda por replicar em componentização */}
+                        <li className="card-inicial">
+                            <img src={Hero} alt="" />
+                            <p>GUIA: como ver minha teleconsulta</p>
+                        </li>
+                        <li className="card-inicial">
+                            <img src={Hero} alt="" />
+                            <p>GUIA: como ver minha teleconsulta</p>
+                        </li>
+                        <li className="card-inicial">
+                            <img src={Hero} alt="" />
+                            <p>GUIA: como ver minha teleconsulta</p>
+                        </li>
+                    </ul>
+                    <div className="flex justify-center gap-4">
+                        <span className="size-4 rounded-full bg-cc-azul mt-[2vh]"></span>
+                        <span className="size-4 rounded-full border-[0.25rem] border-gray-300 bg-gray-400 mt-[2vh]"></span>
+                        <span className="size-4 rounded-full border-[0.25rem] border-gray-300 bg-gray-400 mt-[2vh]"></span>
+                    </div>
+                </div>
+                <div className="max-w-[450px] min-w-[280px] p-4">
+                    <h2 className="text-3xl font-semibold">Você não está sozinho, estamos aqui para te ajudar.</h2>
+                    <div className="flex gap-1 items-center my-4">
+                        <GiHealthNormal className="text-[0.5rem] text-cc-azul" />
+                        <div className="h-1 w-[8vw] min-w-[100px] bg-cc-azul rounded-2xl my-[1vh]"></div>
+                    </div>
+                    <p>Precisando de uma ajuda mais rápida? Veja <span className="inline md:hidden">acima</span><span className="hidden md:inline">ao lado</span> se sua dúvida se encaixa em algum dos guias.</p>
+                </div>
+            </section>
+
+            <section className="flex flex-col items-center justify-center min-h-[70vh] my-[5vh] bg-cc-cinza py-[4vh] w-full">
+                <h2 className="text-3xl font-['Lexend'] font-bold mb-[4vh]">Navege por nossos serviços</h2>
+                <ul className="flex w-[60vw] min-w-[280px] flex-wrap justify-center px-[5vw] gap-x-[2%] gap-y-[4vh]">
+                    <HomeButton path="/guias/guia/:id" icon={BiSolidBookReader} label="Guia do aplicativo"/>
+                    <HomeButton path="/guias/guia/:id" icon={FaLaptopMedical} label="Como será sua consulta"/>
+                    <HomeButton path="/informacoes/:id" icon={FaUserDoctor} label="Profissionais da saúde"/>
+                    <HomeButton path="/informacoes/:id" icon={MdMedicalInformation} label="Cuidados pós consulta"/>
+                    <HomeButton path="/avaliar-teleconsulta" icon={RiSpeakAiFill} label="Como foi a teleconsulta"/>
+                    <HomeButton path="/localizar-ubs" icon={BsFillPinMapFill} label="UBS perto de mim"/>
+                </ul>
+            </section>
+
+            <section className="flex flex-col items-center justify-center my-[5vh] py-[4vh] w-full">
+                <h2 className="text-3xl font-['Lexend'] font-bold mb-[4vh]">Conheça nossos parceiros</h2>
+                <div>
+                    <ul className="[&_img]:h-[10vh]">
+                        <li>
+                            <a href="https://www.iadb.org/pt-br" target="_blank">
+                                <img src={logoBID} alt="Logo do banco interamericano de desenvolvimento"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.bp.org.br/" target="_blank">
+                                <img src={logoBP} alt="Logo da beneficiência portuguesa de são paulo"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://umane.org.br/" target="_blank">
+                                <img src={logoUmane} alt="Logo do grupo umane"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://saude.sp.gov.br/" target="_blank">
+                                <img src={logoSSSP} alt="Logo da secretaria de saúde de são paulo"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        /*
         <main>
             <section className="hero">
-                <Titulo titulo="Início"/>
                 <section>
                     <div className="figure"></div>
                     <img src="./assets/images/banner_hero.png"
@@ -87,6 +177,7 @@ function Home() {
                 <div className="line"></div>
             </section>
         </main>
+        */
     )
 }
 

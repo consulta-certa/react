@@ -13,9 +13,10 @@ import Home from "./routes/Home";
 import Informacoes from "./routes/Informacoes";
 import Lembretes from "./routes/Lembretes";
 import Perfil from "./routes/Perfil";
-import Politicas from "./routes/Politicas";
 import QuemSomos from "./routes/QuemSomos";
 import Termos from "./routes/Termos";
+import Cadastro from "./routes/Cadastro";
+import Entrada from "./routes/Entrada";
 
 const router = createBrowserRouter(
     [{
@@ -25,16 +26,17 @@ const router = createBrowserRouter(
         children: [
             { path: '/ajuda', element: <Ajuda/>},
             { path: '/avaliar-teleconsulta', element: <Avaliacoes/>},
+            { path: '/cadastrar', element: <Cadastro/>},
             { path: '/guias', element: <Categorias/>},
             { path: '/contato', element: <Contato/>},
-            { path: '/guias/guia', element: <Guia/>},
+            { path: '/entrar', element: <Entrada/>},
+            { path: '/guias/guia/:id', element: <Guia/>},
             { path: '/', element: <Home/>},
-            { path: '/informacoes', element: <Informacoes/>},
+            { path: '/informacoes/:id', element: <Informacoes/>},
             { path: '/lembretes', element: <Lembretes/>},
-            { path: '/perfil/:id', element: <Perfil/>},
-            { path: '/politicas-de-privacidade', element: <Politicas/>},
+            { path: '/perfil', element: <Perfil/>},
             { path: '/quem-somos', element: <QuemSomos/>},
-            { path: '/termos-de-uso', element: <Termos/>}
+            { path: '/termos', element: <Termos/>}
         ] 
     }]
 )

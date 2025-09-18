@@ -23,7 +23,7 @@ function Header() {
                     <img src={logo} alt="Logo da página Consulta Certa" className="logo" />
                 </Link>
             </div>
-            <nav>
+            <nav className="block max-lg:hidden">
                 <ul>
                     <NavElement path="/" icon={AiFillHome} label="Início"/>
                     <NavElement path="/guias" icon={BiSolidBookReader} label="Guias"/>

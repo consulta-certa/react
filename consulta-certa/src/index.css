@@ -24,9 +24,9 @@
 }
 
 .header {
-  @apply flex items-center justify-between w-full shadow-md py-[2vh] px-[5vw];
+  @apply flex items-center justify-between h-[12vh] w-full shadow-md py-[2vh] px-[5vw] bg-white;
   & nav {
-    @apply max-md:fixed max-md:bottom-0 max-md:left-0 max-md:w-full max-md:z-30 bg-white;
+    @apply bg-white;
 
     & ul {
       @apply flex items-center justify-center gap-[1vw];
@@ -35,16 +35,29 @@
 }
 
 h1 {
-  @apply text-cc-preto
+  @apply font-['Lexend'] font-black uppercase;
 }
 
 .logo {
-  @apply max-sm:h-[6vh] h-[8vh];
+  @apply h-[8vh];
+}
+
+main {
+  @apply flex flex-col items-center min-w-[300px] w-[80vw] max-w-[1400px] min-h-[70vh] my-[2vh] bg-white rounded-lg;
+}
+
+.card-inicial {
+  @apply bg-cc-azul rounded-4xl p-8 drop-shadow-lg min-w-[240px];
+
+  & p {
+    @apply text-white mt-8 text-lg;
+  }
 }
 
 @theme {
   --color-cc-azul: #1E77D0;
   --color-cc-preto: #2d2d2d;
+  --color-cc-cinza: #f0f4f4;
 }
 
 :root {
