@@ -32,7 +32,7 @@ function Header() {
                     <NavElement path="/contato" icon={IoMdChatboxes} label="Contato"/>
                     <NavElement path="/avaliar-teleconsulta" icon={MdRateReview} label="Avaliações"/>
                     <NavElement path="/lembretes" icon={TbBellRingingFilled} label="Lembretes"/>
-                    <NavElement path="/perfil/:id" icon={IoPersonCircle} label="Perfil"/>
+                    <NavElement path="/perfil" icon={IoPersonCircle} label="Perfil"/>
                 </ul>
             </nav>
         </header>

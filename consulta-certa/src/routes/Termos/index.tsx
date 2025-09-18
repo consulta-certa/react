@@ -1,6 +1,6 @@
 function Termos() {
     return(
-        <main id="Termos"></main>
+        <main></main>
     )
 }
 

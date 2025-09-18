@@ -1,5 +1,11 @@
 function Avaliacoes() {
-    return(
+    return (
+
+        <main>
+            
+        </main>
+
+        /*
         <main>
             <section className="titulo">
                 <h1>Avaliações</h1>
@@ -47,6 +53,7 @@ function Avaliacoes() {
                 </div>
             </section>
         </main>
+        */
     )
 }
 

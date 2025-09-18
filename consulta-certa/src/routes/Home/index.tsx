@@ -52,10 +52,10 @@ function Home() {
             </section>
 
             <section className="flex flex-col items-center justify-center min-h-[70vh] my-[5vh] bg-cc-cinza py-[4vh] w-full">
-                <h2 className="text-3xl font-['Lexend'] font-bold mb-[4vh]">Navege por nossos serviços</h2>
+                <h2 className="titulo-2">Navege por nossos serviços</h2>
                 <ul className="flex w-[60vw] min-w-[280px] flex-wrap justify-center px-[5vw] gap-x-[2%] gap-y-[4vh]">
-                    <HomeButton path="/guias/guia/:id" icon={BiSolidBookReader} label="Guia do aplicativo"/>
-                    <HomeButton path="/guias/guia/:id" icon={FaLaptopMedical} label="Como será sua consulta"/>
+                    <HomeButton path="/guias/guia/:name" icon={BiSolidBookReader} label="Guia do aplicativo"/>
+                    <HomeButton path="/guias/guia/:name" icon={FaLaptopMedical} label="Como será sua consulta"/>
                     <HomeButton path="/informacoes/:id" icon={FaUserDoctor} label="Profissionais da saúde"/>
                     <HomeButton path="/informacoes/:id" icon={MdMedicalInformation} label="Cuidados pós consulta"/>
                     <HomeButton path="/avaliar-teleconsulta" icon={RiSpeakAiFill} label="Como foi a teleconsulta"/>
@@ -64,7 +64,7 @@ function Home() {
             </section>
 
             <section className="flex flex-col items-center justify-center my-[5vh] py-[4vh] w-full">
-                <h2 className="text-3xl font-['Lexend'] font-bold mb-[4vh]">Conheça nossos parceiros</h2>
+                <h2 className="titulo-2">Conheça nossos parceiros</h2>
                 <div>
                     <ul className="[&_img]:h-[10vh]">
                         <li>
