@@ -91,14 +91,15 @@ main {
   }
 
   & button {
-    @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 mt-[2vh];
+    @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 mt-[2vh] min-w-[150px];
   }
 }
 
 @theme {
   --color-cc-azul: #1e77d0;
   --color-cc-preto: #2d2d2d;
-  --color-cc-cinza: #f0f4f4;
+  --color-cc-cinza: #D0E9F7;
+  --color-cc-cinza-escuro: #98B5C4;
 }
 
 :root {

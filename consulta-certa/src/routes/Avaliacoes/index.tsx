@@ -121,7 +121,7 @@ function Avaliacoes () {
                         className={`text-4xl transition-all ease-in duration-200 ${
                           estrela <= nota
                             ? 'text-cc-azul scale-125'
-                            : 'text-gray-300'
+                            : 'text-cc-cinza-escuro'
                         }`}
                       />
                     </label>

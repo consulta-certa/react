@@ -11,7 +11,7 @@ function Cadastro () {
 
   return (
     <main>
-      <Titulo titulo='Cadastro' />
+      <Titulo titulo='Criar perfil' />
       <section className='form'>
         <form onSubmit={handleSubmit}>
           <fieldset>
