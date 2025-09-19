@@ -38,6 +38,10 @@ h1 {
   @apply font-['Lexend'] font-black uppercase;
 }
 
+.titulo-2 {
+  @apply text-3xl font-['Lexend'] font-bold mb-[4vh]
+}
+
 .logo {
   @apply h-[8vh];
 }

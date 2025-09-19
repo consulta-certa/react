@@ -4,7 +4,7 @@ function Guia() {
     return(
         <main>
             <Titulo titulo="Guia"/>
-            <nav className="categorias">
+            <nav className="ListaGuias">
                 <a href="./guiaHC.html">
                     <img src="../assets/images/banner_hero.png" alt="Imagem do Portal do Paciente HC"/>
                     <p>Portal do Paciente</p>

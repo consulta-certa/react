@@ -1,6 +1,6 @@
 function Informacoes() {
     return(
-        <main id="Informacoes"></main>
+        <main></main>
     )
 }
 
