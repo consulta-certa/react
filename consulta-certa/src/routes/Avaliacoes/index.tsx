@@ -1,60 +1,146 @@
-function Avaliacoes() {
-    return (
+import type React from 'react'
+import { useEffect, useState } from 'react'
+import { FaStar } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
+import Titulo from '../../components/Titulo/Titulo'
+import Linha from '../../components/Linha/Linha'
 
-        <main>
-            
-        </main>
+function Avaliacoes () {
+  const [enviado, setEnviado] = useState(false)
+  const [dataSelecionada, setDataSelecionada] = useState('')
+  const [erro, setErro] = useState('')
+  const [nota, setNota] = useState(1)
+  const navigate = useNavigate()
 
-        /*
-        <main>
-            <section className="titulo">
-                <h1>Avaliações</h1>
-                <p>Envie sua avaliação para o Hospital das Clínicas</p>
-            </section>
-            <section id="avaliacao">
-                <div>
-                    <form action="#" method="get" id="frmAvaliacao">
-                        <fieldset>
-                            <legend>Digite sua informações:</legend>
-                            <div>
-                                <label htmlFor="idNome">Nome</label>
-                                <input type="text" name="nome" id="nome" placeholder="Nome"/>
-                            </div>
-                            <div>
-                                <label htmlFor="idEmail">Email</label>
-                                <input type="email" name="email" id="email" placeholder="Email"/>
-                            </div>
-                            <div>
-                                <label htmlFor="idTelefone">Telefone</label>
-                                <input type="tel" name="telefone" id="telefone" placeholder="Telefone"/>
-                            </div>
-                            <div>
-                                <label htmlFor="idConsulta">Consulta</label>
-                                <input type="text" name="consulta" id="consulta" placeholder="Consulta"/>
-                            </div>
-                            <div>
-                                <label htmlFor="idDataConsulta">Data da Consulta</label>
-                                <input type="date" name="dataConsulta" id="dataConsulta" placeholder="Data da consulta"/>
-                            </div>
-                            <div>
-                                <label htmlFor="idComentario">Comentario</label>
-                                <input type="text" name="comentario" id="comentario" placeholder="Algum comentario?"/>
-                            </div>
-                            <div>
-                                <label htmlFor="idAvaliacao">Nota da consulta</label>
-                                <input type="number" name="avaliacao" id="avaliacao" min="0" max="10"
-                                    placeholder="Nota da consulta"/>
-                            </div>
-                            <div>
-                                <button type="submit" id="btnEnciar">AVALIAR</button>
-                            </div>
-                        </fieldset>
-                    </form>
+  useEffect(() => {
+    if (enviado) {
+      const timer = setTimeout(() => {
+        navigate('/', { replace: true })
+      }, 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [enviado, navigate])
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const data = new Date(dataSelecionada)
+    const hoje = new Date()
+    const limite = new Date()
+    limite.setDate(hoje.getDate() - 14)
+
+    if (data < limite) {
+      setErro('Avaliação expirada. Selecione uma data válida.')
+      return
+    }
+
+    setErro('')
+    setEnviado(true)
+  }
+
+  return (
+    <main>
+      <Titulo titulo='Avaliação' />
+      {enviado ? (
+        <section className='my-auto'>
+          <h2 className='titulo-2'>Avaliação Enviada!</h2>
+          <Linha />
+          <p>Estamos te redirecionado para a página inicial.</p>
+        </section>
+      ) : (
+        <section className='form'>
+          {erro && <p className='text-red-400'>{erro}</p>}
+          <form onSubmit={handleSubmit}>
+            <fieldset>
+              <div>
+                <div className='input-container'>
+                  <label htmlFor='idNome'>
+                    Nome <span className='text-red-500 font-bold'>*</span>{' '}
+                  </label>
+                  <input type='text' id='idNome' name='nome' required />
                 </div>
-            </section>
-        </main>
-        */
-    )
+                <div className='input-container'>
+                  <label htmlFor='idEmailTel'>
+                    Email ou telefone{' '}
+                    <span className='text-red-500 font-bold'>*</span>{' '}
+                  </label>
+                  <input type='text' id='idEmailTel' name='emailTel' required />
+                </div>
+              </div>
+              <div>
+                <div className='input-container'>
+                  <label htmlFor='idConsulta'>
+                    Qual foi sua teleconsulta?{' '}
+                    <span className='text-red-500 font-bold'>*</span>{' '}
+                  </label>
+                  <select
+                    name='consulta'
+                    id='idConsulta'
+                    defaultValue=''
+                    required
+                  >
+                    <option value='' disabled>
+                      Selecione uma opção
+                    </option>
+                    <option value='fisioterapeuta'>Fisioterapeuta</option>
+                    <option value='cardiologista'>Cardiologista</option>
+                    <option value='neurologista'>Neurologista</option>
+                    <option value='optometrista'>Optometrista</option>
+                    <option value='ortopedista'>Ortopedista</option>
+                  </select>
+                </div>
+                <div className='input-container'>
+                  <label htmlFor='idDataConsulta'>
+                    Quando foi sua teleconsulta?{' '}
+                    <span className='text-red-500 font-bold'>*</span>{' '}
+                  </label>
+                  <input
+                    type='datetime-local'
+                    id='idDataConsulta'
+                    name='dataConsulta'
+                    required
+                    onChange={e => setDataSelecionada(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className='input-container'>
+                <label htmlFor='idNota'>
+                  Deixe a nota aqui{' '}
+                  <span className='text-red-500 font-bold'>*</span>{' '}
+                </label>
+                <div className='flex items-center justify-evenly w-[50%]'>
+                  {[1, 2, 3, 4, 5].map(estrela => (
+                    <label key={estrela} className='cursor-pointer'>
+                      <input
+                        type='radio'
+                        name='rating'
+                        value={estrela}
+                        className='sr-only peer'
+                        onChange={() => setNota(estrela)}
+                      />
+                      <FaStar
+                        className={`text-4xl transition-all ease-in duration-200 ${
+                          estrela <= nota
+                            ? 'text-cc-azul scale-125'
+                            : 'text-gray-300'
+                        }`}
+                      />
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div className='input-container'>
+                <label htmlFor='idComentario'>
+                  Algum comentário sobre sua teleconsulta?
+                </label>
+                <textarea id='idComentario' name='comentario' rows={2} />
+              </div>
+            </fieldset>
+            <button type='submit'>Enviar avaliação</button>
+          </form>
+        </section>
+      )}
+    </main>
+  )
 }
 
 export default Avaliacoes

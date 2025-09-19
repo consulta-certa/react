@@ -1,16 +1,16 @@
 /* Tailwind CSS */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* fonte título*/
 @font-face {
-    font-family: 'Lexend';
-    src: url('/fonts/Lexend/Lexend-VariableFont_wght.ttf');
+  font-family: 'Lexend';
+  src: url('/fonts/Lexend/Lexend-VariableFont_wght.ttf');
 }
 
 /* fonte corpo*/
 @font-face {
-    font-family: 'Roboto';
-    src: url('/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
 }
 
 @layer base {
@@ -39,7 +39,7 @@ h1 {
 }
 
 .titulo-2 {
-  @apply text-3xl font-['Lexend'] font-bold mb-[4vh]
+  @apply text-3xl font-['Lexend'] font-bold mb-[4vh];
 }
 
 .logo {
@@ -47,7 +47,7 @@ h1 {
 }
 
 main {
-  @apply flex flex-col items-center min-w-[300px] w-[80vw] max-w-[1400px] min-h-[70vh] my-[2vh] bg-white rounded-lg;
+  @apply flex flex-col items-center min-w-[300px] w-[80vw] max-w-[1400px] max-lg:w-[96vw] min-h-[70vh] my-[2vh] bg-white rounded-lg;
 }
 
 .card-inicial {
@@ -58,8 +58,45 @@ main {
   }
 }
 
+.form {
+  @apply bg-cc-cinza p-4 my-[2vh] max-md:mx-[2vw] rounded-2xl;
+  & form {
+    @apply flex flex-col items-center;
+  }
+
+  & fieldset {
+    @apply w-full;
+  }
+
+  & fieldset > div:not(.input-container) {
+    @apply flex max-md:flex-col;
+  }
+
+  & .input-container {
+    @apply flex flex-col p-2;
+  }
+
+  & label {
+    @apply mb-[1vh];
+  }
+
+  & input:not(input[type='radio'],input[type='checkbox']),
+  select,
+  textarea {
+    @apply bg-white p-2 rounded-lg w-[20vw] min-w-[250px] shadow-md;
+  }
+
+  & textarea {
+    @apply w-auto
+  }
+
+  & button {
+    @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 mt-[2vh];
+  }
+}
+
 @theme {
-  --color-cc-azul: #1E77D0;
+  --color-cc-azul: #1e77d0;
   --color-cc-preto: #2d2d2d;
   --color-cc-cinza: #f0f4f4;
 }

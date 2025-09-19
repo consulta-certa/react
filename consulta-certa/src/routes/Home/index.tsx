@@ -1,6 +1,5 @@
 import Titulo from "../../components/Titulo/Titulo"
 import Hero from '../../assets/images/carrossel-template1.png'
-import { GiHealthNormal } from "react-icons/gi"
 import HomeButton from "../../components/HomeButton/HomeButton"
 import { BiSolidBookReader } from "react-icons/bi";
 import { FaLaptopMedical } from "react-icons/fa";
@@ -13,6 +12,7 @@ import logoBID from '../../assets/images/logo_parceiro.png'
 import logoBP from '../../assets/images/logo_parceiro1.png'
 import logoUmane from '../../assets/images/logo_parceiro2.png'
 import logoSSSP from '../../assets/images/logo_parceiro3.png'
+import Linha from "../../components/Linha/Linha";
 
 function Home() {
     return (
@@ -43,10 +43,7 @@ function Home() {
                 </div>
                 <div className="max-w-[450px] min-w-[280px] p-4">
                     <h2 className="text-3xl font-semibold">Você não está sozinho, estamos aqui para te ajudar.</h2>
-                    <div className="flex gap-1 items-center my-4">
-                        <GiHealthNormal className="text-[0.5rem] text-cc-azul" />
-                        <div className="h-1 w-[8vw] min-w-[100px] bg-cc-azul rounded-2xl my-[1vh]"></div>
-                    </div>
+                    <Linha/>
                     <p>Precisando de uma ajuda mais rápida? Veja <span className="inline md:hidden">acima</span><span className="hidden md:inline">ao lado</span> se sua dúvida se encaixa em algum dos guias.</p>
                 </div>
             </section>

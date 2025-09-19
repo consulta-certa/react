@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Perfil() {
+    const navigate = useNavigate();
+
+    useEffect(()=> {
+        navigate('/cadastrar', { replace: true })
+    }, [])
+
     return(
         <main>
             <section className="titulo">

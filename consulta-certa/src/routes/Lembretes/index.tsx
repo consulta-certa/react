@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"
+
 function Lembretes() {
+    const navigate = useNavigate();
+
+    useEffect(()=> {
+        navigate('/cadastrar', { replace: true })
+    }, [])
+
     return(
         
         <main>
