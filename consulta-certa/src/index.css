@@ -23,6 +23,10 @@
   }
 }
 
+:root {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
 @layer components {
   .header {
     @apply flex items-center justify-between h-[12vh] w-full shadow-md py-[2vh] px-[5vw] bg-white;
@@ -98,13 +102,21 @@
 }
 
 @theme {
+  /* cores */
   --color-cc-azul: #1e77d0;
   --color-cc-preto: #2d2d2d;
   --color-cc-cinza: #d0e9f7;
   --color-cc-cinza-escuro: #98b5c4;
-}
 
-:root {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  color: #4e4e4e;
+  /* animações */
+  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 }

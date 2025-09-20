@@ -69,7 +69,7 @@ function Cadastro () {
                 />
               </div>
             </div>
-            <div className='gap-2 pl-[1vw]'>
+            <div className='gap-2 pl-[1vw] my-[2vh]'>
               <input type='checkbox' name='acompanhante' id='idAcompanhante' />
               <label htmlFor='idAcompanhante'>
                 Tem um cuidador ou acompanhante?
