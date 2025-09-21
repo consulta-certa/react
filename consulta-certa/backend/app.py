@@ -1,7 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import oracledb
+from apscheduler.schedulers.background import BackgroundScheduler
+import atexit
 from datetime import datetime, timedelta
+import oracledb
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 CORS(app)
@@ -34,12 +39,13 @@ def get_next_id(conn, table_name, id_column):
     cursor.close()
     return next_id
 
+
 @app.route("/api/set-reminder", methods=["POST"])
 def set_reminder():
     data = request.get_json()
     email = data.get("email")
     telefone = data.get("telefone")
-    data_consulta_str = data.get("data_consulta")  # Ex: "25/07/2024 14:30"
+    data_consulta_str = data.get("data_consulta")  
     especialidade = data.get("especialidade", "geral")
 
     if not email or not data_consulta_str:
@@ -69,7 +75,7 @@ def set_reminder():
                 VALUES (:id_paciente, :nome, :email, :telefone)
             """, {
                 "id_paciente": id_paciente,
-                "nome": "Paciente",  # ou receber no JSON
+                "nome": "Paciente",
                 "email": email,
                 "telefone": telefone or ""
             })
@@ -120,11 +126,105 @@ def set_reminder():
 
     except Exception as e:
         import traceback
-        traceback.print_exc()  # imprime o erro completo no console
+        traceback.print_exc() #Error
         if conn:
             conn.rollback()
             conn.close()
         return jsonify({"error": "Erro ao salvar dados"}), 500
+    
+# FUNCAO API SENDGRID -  emailENVIANDO
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+def enviar_email(destinatario, data_consulta):
+    if not SENDGRID_API_KEY:
+        print("Erro: SendGrid API Key não configurada.")
+        return False
+    message = Mail(
+        from_email='contato@consultacerta.tech',  
+        to_emails=destinatario,
+        subject='Lembrete de Consulta',
+        html_content=f'<p>Olá! Este é um lembrete da sua consulta agendada para {data_consulta.strftime("%d/%m/%Y %H:%M")}.</p>'
+    )
+    
+    try:
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(message)
+        print(f"Email enviado para {destinatario}, status: {response.status_code}")
+        return response.status_code == 202
+    except Exception as e:
+        print(f"Erro ao enviar e-mail: {e}")
+        return False    
+    
+    
+@app.route("/api/test-email")
+def test_email():
+    sucesso = enviar_email("mariafelipeinfo@gmail.com", datetime.now())
+    if sucesso:
+        return "Email enviado com sucesso!"
+    else:
+        return "Falha ao enviar email.", 500
+    
+from apscheduler.schedulers.background import BackgroundScheduler
+
+def enviar_lembretes_pendentes():
+    print("Verificando lembretes pendentes para envio...")
+    conn = get_connection()
+    if not conn:
+        print("Erro ao conectar ao banco para enviar lembretes")
+        return
+
+    try:
+        cursor = conn.cursor()
+        agora = datetime.now()
+
+        # Buscar lembretes com data_envio <= agora e que ainda não foram enviados
+        cursor.execute("""
+            SELECT id_lembrete, email, data_envio, id_consulta
+            FROM lembretes
+            WHERE data_envio <= :agora
+              AND (enviado IS NULL OR enviado = 'N')
+        """, {"agora": agora})
+
+        lembretes = cursor.fetchall()
+
+        for lembrete in lembretes:
+            id_lembrete, email, data_envio, id_consulta = lembrete
+
+            # Buscar data da consulta para o e-mail
+            cursor.execute("SELECT data_consulta FROM consultas WHERE id_consulta = :id_consulta", {"id_consulta": id_consulta})
+            data_consulta = cursor.fetchone()
+            if data_consulta:
+                data_consulta = data_consulta[0]
+            else:
+                print(f"Consulta {id_consulta} não encontrada.")
+                continue
+
+            sucesso = enviar_email(email, data_consulta)
+            if sucesso:
+                print(f"Lembrete {id_lembrete} enviado para {email}")
+                # Marcar lembrete como enviado
+                cursor.execute("UPDATE lembretes SET enviado = 'S' WHERE id_lembrete = :id_lembrete", {"id_lembrete": id_lembrete})
+                conn.commit()
+            else:
+                print(f"Falha ao enviar lembrete {id_lembrete} para {email}")
+
+        cursor.close()
+        conn.close()
+
+    except Exception as e:
+        print(f"Erro ao enviar lembretes: {e}")
+        if conn:
+            conn.rollback()
+            conn.close()
+
+from apscheduler.schedulers.background import BackgroundScheduler
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=enviar_lembretes_pendentes, trigger="interval", minutes=10)
+scheduler.start()
+# Para garantir que o scheduler pare junto com o Flask
+atexit.register(lambda: scheduler.shutdown())
+
+
+print("SendGrid API Key:", SENDGRID_API_KEY)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
