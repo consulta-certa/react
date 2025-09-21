@@ -63,6 +63,10 @@
     }
   }
 
+  .botao {
+    @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh];
+  }
+
   .form {
     @apply bg-cc-cinza p-4 my-[2vh] max-md:mx-[2vw] rounded-2xl;
     & form {
@@ -96,7 +100,7 @@
     }
 
     & button {
-      @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 mt-[2vh] min-w-[150px];
+      @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh];
     }
   }
 }

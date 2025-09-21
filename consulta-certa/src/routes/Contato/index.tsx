@@ -4,12 +4,16 @@ import { MdMail } from 'react-icons/md'
 import { FaMapLocationDot, FaSquarePhone } from 'react-icons/fa6'
 
 function Contato () {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
+  
   return (
     <main>
       <Titulo titulo='Contato' />
       <div className='flex max-md:flex-col gap-[5vw] max-md:gap-[2vh] justify-center items-center w-full'>
         <section className='form'>
-          <form>
+          <form onSubmit={handleSubmit}>
             <fieldset>
               <div className='input-container'>
                 <label htmlFor='idNome'>

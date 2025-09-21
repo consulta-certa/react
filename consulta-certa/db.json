@@ -90,6 +90,42 @@
             "video": "video",
             "imagem": "carrossel-template2.png",
             "data_publicacao": "01/01/2025 23:59"
+        },
+        {
+            "id_conteudo": 6,
+            "tipo": "f",
+            "titulo": "Dúvida frequente?",
+            "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eum ab illum quae! Provident earum voluptas laudantium illo, dolore quasi labore. Culpa nihil mollitia dignissimos commodi possimus. Quo, repudiandae error?",
+            "video": "",
+            "imagem": "",
+            "data_publicacao": "20/09/2025 20:57"
+        },
+        {
+            "id_conteudo": 7,
+            "tipo": "f",
+            "titulo": "Dúvida frequente?",
+            "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eum ab illum quae! Provident earum voluptas laudantium illo, dolore quasi labore. Culpa nihil mollitia dignissimos commodi possimus. Quo, repudiandae error?",
+            "video": "",
+            "imagem": "",
+            "data_publicacao": "20/09/2025 20:57"
+        },
+        {
+            "id_conteudo": 8,
+            "tipo": "f",
+            "titulo": "Dúvida frequente?",
+            "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eum ab illum quae! Provident earum voluptas laudantium illo, dolore quasi labore. Culpa nihil mollitia dignissimos commodi possimus. Quo, repudiandae error?",
+            "video": "",
+            "imagem": "",
+            "data_publicacao": "20/09/2025 20:57"
+        },
+        {
+            "id_conteudo": 9,
+            "tipo": "f",
+            "titulo": "Dúvida frequente?",
+            "texto": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eum ab illum quae! Provident earum voluptas laudantium illo, dolore quasi labore. Culpa nihil mollitia dignissimos commodi possimus. Quo, repudiandae error?",
+            "video": "",
+            "imagem": "",
+            "data_publicacao": "20/09/2025 20:57"
         }
     ],
     "lembretes": [
