@@ -40,20 +40,20 @@ function ListaGuias () {
 
       <section className='flex max-md:flex-col justify-between min-w-[280px] px-[1vw] mt-[2vh]'>
         <div className='flex items-center flex-col gap-[2vh]'>
-          <button className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${categoria == 1 ? 'bg-cc-cinza' : 'bg-cc-azul'}`} onClick={()=>setCategoria(0)}>
-            <img
-              src={imageTest}
-              alt=''
-              className='h-[6vh] w-full object-cover'
-            />
+          <button
+            className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${
+              categoria == 1 ? 'bg-cc-cinza' : 'bg-cc-azul'
+            }`}
+            onClick={() => setCategoria(0)}
+          >
             Portal do Paciente HC
           </button>
-          <button className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${categoria == 0 ? 'bg-cc-cinza' : 'bg-cc-azul'}`} onClick={()=>setCategoria(1)}>
-            <img
-              src={imageTest}
-              alt=''
-              className='h-[6vh] w-full object-cover'
-            />
+          <button
+            className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${
+              categoria == 0 ? 'bg-cc-cinza' : 'bg-cc-azul'
+            }`}
+            onClick={() => setCategoria(1)}
+          >
             Teleconsulta
           </button>
         </div>

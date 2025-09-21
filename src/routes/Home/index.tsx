@@ -115,9 +115,9 @@ function Home () {
         </div>
       </section>
 
-      <section className='flex flex-col items-center justify-center min-h-[70vh] my-[10vh] bg-cc-cinza py-[4vh] w-[112%]'>
+      <section className='flex flex-col items-center justify-center min-h-[70vh] my-[10vh] bg-cc-cinza py-[4vh] w-[112%] px-[2vw]'>
         <h2 className='titulo-2'>Navegue por nossos serviços</h2>
-        <ul className='flex w-[60vw] min-w-[280px] flex-wrap justify-center mt-[4vh] px-[5vw] gap-x-[2%] gap-y-[4vh]'>
+        <ul className='flex w-[60vw] max-lg:w-[80vw] min-w-[280px] flex-wrap justify-center mt-[4vh] gap-x-[2%] gap-y-[4vh]'>
           <HomeButton
             path='/guias/guia/:name'
             icon={BiSolidBookReader}
