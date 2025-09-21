@@ -27,7 +27,7 @@ function Home () {
       if (!hover) {
         setIndex(prev => (prev + 1) % 3)
       }
-    }, 4000)
+    }, 3000)
 
     return () => clearInterval(interval)
   }, [hover])
@@ -64,7 +64,7 @@ function Home () {
               <li className='min-w-full'>
                 <div className='flex justify-center px-[2vw]'>
                   <Link
-                    to='/guias/guia/como-fazer-login-pelo-gov-br-no-portal-hc'
+                    to='/guias/guia/como-fazer-login-pelo-govbr-no-portal-hc'
                     className='card-inicial flex flex-col items-center text-center'
                   >
                     <img src={Ajuda2} alt='' aria-hidden='true' />
