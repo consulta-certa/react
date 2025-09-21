@@ -1,90 +1,124 @@
-function QuemSomos() {
+import Linha from '../../components/Linha/Linha'
+import Titulo from '../../components/Titulo/Titulo'
+import quemSomosBanner from '../../assets/images/carrossel-template3.png'
+import { TbTargetArrow } from 'react-icons/tb'
+import { RiTreasureMapFill } from 'react-icons/ri'
+import { FaGithub, FaHiking, FaLinkedin } from 'react-icons/fa'
+import dev1 from '../../assets/images/carrossel-template3.png'
+
+function QuemSomos () {
   return (
     <main>
-      <h1>Quem somos</h1>
-
-      <section className="bloco">
-        <section className="texto-quem">
-          <h2>O que é o Consulta Certa?</h2>
+      <Titulo titulo='Quem somos' />
+      <section className='flex max-md:flex-col-reverse items-center justify-between min-h-[66vh] pb-[4vh]'>
+        <div className='w-[50%] min-w-[280px]'>
+          <div>
+            <h2 className='titulo-2'>A história por trás do Consulta Certa</h2>
+            <Linha />
+          </div>
           <p>
-            Consulta Certa é um site feito por alunos da FIAP do curso de ADS para o projeto Challenge,
-            com intenção de resolver um desafio dado pelo Hospital das Clínicas.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores
+            impedit adipisci ullam pariatur totam quibusdam, nostrum corporis
+            itaque facilis id voluptatum rem omnis accusantium illum consequatur
+            labore incidunt optio minus quae fuga? Qui, a quisquam molestias
+            harum autem, alias voluptate maiores nulla doloribus sed inventore.
+            Ad soluta omnis voluptas temporibus.
           </p>
-        </section>
-        <video src="#" controls />
+        </div>
+        <img src={quemSomosBanner} alt='' className='w-[30%] max-md:mb-[2vh]' />
       </section>
-
-      <section className="bloco">
-        <section className="texto-objetivo">
-          <h2>Nosso objetivo</h2>
-          <p>
-            Nosso objetivo é guiar os pacientes pelo Portal do Paciente e garantir que eles realizem suas
-            teleconsultas sem mistério.
-          </p>
-        </section>
-
-        <figure>
-          <img src="../assets/images/arrow.png" alt="Seta" />
-        </figure>
-
-        <div className="linha-azul"></div>
-
-        <figure>
-          <img src="../assets/images/icon_graph.png" alt="Ícone gráfico" />
-          <img src="../assets/images/icon_acessibility.png" alt="Ícone acessibilidade" />
-          <img src="../assets/images/icon_quality.png" alt="Ícone qualidade" />
-          <img src="../assets/images/icon_seta.png" alt="Ícone seta" />
-        </figure>
-
-        <div className="linha-azul"></div>
+      <section className='flex flex-col items-center justify-center min-h-[70vh] my-[10vh] bg-cc-cinza py-[4vh] w-[112%] px-4'>
+        <h2 className='titulo-2'>E por que estamos aqui?</h2>
+        <div className='flex flex-wrap gap-[4vw] max-lg:gap-[2vh] items-center justify-between w-[90%] mt-[4vh]'>
+          <div className='flex flex-col justify-center basis-[28%] mr-auto max-lg:basis-2/4 max-sm:basis-4/5 bg-white min-h-[28vh] rounded-2xl p-4 relative detalhes-laterais text-center items-center'>
+            <div className='flex items-center'>
+              <TbTargetArrow className='text-4xl mr-2' />
+              <h3 className='text-2xl font-bold flex items-center'>
+                Motivação
+              </h3>
+            </div>
+            <p>Reduzir significativamente o absenteísmo nas teleconsultas.</p>
+          </div>
+          <div className='flex flex-col justify-center basis-[28%] mx-auto max-lg:basis-2/4 max-sm:basis-4/5 bg-white min-h-[40vh] rounded-2xl p-4 relative detalhes-laterais text-center items-center'>
+            <div className='flex items-center'>
+              <FaHiking className='text-4xl mr-2' />
+              <h3 className='text-2xl font-bold flex items-center'>Metas</h3>
+            </div>
+            <ul>
+              <li>Reduzir as faltas nas teleconsultas</li>
+              <li>Ser uma ponte entre paciente e HC</li>
+              <li>Ajudar pacientes a se manterem saudáveis</li>
+            </ul>
+          </div>
+          <div className='flex flex-col justify-center basis-[28%] ml-auto max-lg:basis-2/4 max-sm:basis-4/5 bg-white min-h-[30vh] rounded-2xl p-4 relative detalhes-laterais text-center items-center'>
+            <div className='flex items-center'>
+              <RiTreasureMapFill className='text-4xl mr-2' />
+              <h3 className='text-2xl font-bold flex items-center'>Meios</h3>
+            </div>
+            <p>Textos simples e acessibilidade</p>
+          </div>
+        </div>
       </section>
-
-      <section>
-        <section className="texto-desenvolvedores">
-          <h2>Desenvolvedores</h2>
-          <p>
-            Somos alunos da FIAP, engajados em desenvolver soluções acessíveis para a saúde pública digital.
-          </p>
-        </section>
-
-        <ul className="desenvolvedores">
-          <li>
-            <img src="../assets/images/FelipeFerrete.jpeg" alt="Foto do Felipe Ferrete" />
-            <section>
-              <h3>Felipe Ferrete Soares Lemes</h3>
-              <p>Turma: 1TDSPF</p>
-              <p>RM: 562999</p>
-              <section>
-                <a href="https://github.com/FelipeFerrete" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/felipe-ferrete-ab63a318a/" target="_blank">LinkedIn</a>
-              </section>
-            </section>
+      <section className='flex max-md:flex-col items-center justify-between min-h-[70vh] w-full gap-8 px-4'>
+        <div>
+          <h2 className='titulo-2'>Nossa equipe</h2>
+          <Linha />
+          <div>
+            <h3 className='text-xl font-semibold'>Consulta Certa</h3>
+            <p>1TDSPF - ADSFIAP Paulista</p>
+          </div>
+        </div>
+        <ul className='flex max-md:flex-col justify-between items-center gap-4 w-2/3 min-w-[280px] min-h-[50vh]'>
+          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
+            <img src={dev1} alt='' className='size-32 object-cover' />
+            <p className='mt-4'>Felipe Ferrete Soares Lemes</p>
+            <p className='text-sm opacity-70'>RM562999</p>
+            <ul className='flex gap-4 mt-4 text-2xl'>
+              <li>
+                <a href='https://github.com/'>
+                  <FaGithub />
+                </a>
+              </li>
+              <li>
+                <a href='https://linkedin.com/in/'>
+                  <FaLinkedin />
+                </a>
+              </li>
+            </ul>
           </li>
-
-          <li>
-            <img src="../assets/images/GustavoBosak.jpeg" alt="Foto do Gustavo Bosak" />
-            <section>
-              <h3>Gustavo Bosak Santos</h3>
-              <p>Turma: 1TDSPF</p>
-              <p>RM: 566315</p>
-              <section>
-                <a href="https://github.com/Gustavo-Bosak" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/gustavo-bosak-santos/" target="_blank">LinkedIn</a>
-              </section>
-            </section>
+          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
+            <img src={dev1} alt='' className='size-32 object-cover' />
+            <p className='mt-4'>Gustavo Bosak Santos</p>
+            <p className='text-sm opacity-70'>RM566315</p>
+            <ul className='flex gap-4 mt-4 text-2xl'>
+              <li>
+                <a href='https://github.com/'>
+                  <FaGithub />
+                </a>
+              </li>
+              <li>
+                <a href='https://linkedin.com/in/'>
+                  <FaLinkedin />
+                </a>
+              </li>
+            </ul>
           </li>
-
-          <li>
-            <img src="../assets/images/NikolasBrisola.jpeg" alt="Foto do Nikolas Brisola" />
-            <section>
-              <h3>Nikolas Henrique de Souza Lemes Brisola</h3>
-              <p>Turma: 1TDSPF</p>
-              <p>RM: 564371</p>
-              <section>
-                <a href="https://github.com/NikolasBrisola" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/nikolas-brisola-ab3588353/" target="_blank">LinkedIn</a>
-              </section>
-            </section>
+          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
+            <img src={dev1} alt='' className='size-32 object-cover' />
+            <p className='mt-4'>Nikolas Henrique de Souza Lemes Brisola</p>
+            <p className='text-sm opacity-70'>RM564371</p>
+            <ul className='flex gap-4 mt-4 text-2xl'>
+              <li>
+                <a href='https://github.com/'>
+                  <FaGithub />
+                </a>
+              </li>
+              <li>
+                <a href='https://linkedin.com/in/'>
+                  <FaLinkedin />
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </section>

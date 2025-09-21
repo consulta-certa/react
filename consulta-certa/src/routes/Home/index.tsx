@@ -27,7 +27,7 @@ function Home () {
       if (!hover) {
         setIndex(prev => (prev + 1) % 3)
       }
-    }, 4000) // 4 segundos por slide
+    }, 4000)
 
     return () => clearInterval(interval)
   }, [hover])
@@ -95,20 +95,20 @@ function Home () {
                     ? 'bg-cc-azul'
                     : 'border-[0.25rem] border-gray-300 bg-gray-400'
                 }`}
-                aria-label={`Ir para slide ${i + 1}`}
+                aria-label={`Ir para link ${i + 1}`}
               />
             ))}
           </nav>
         </aside>
 
         <div className='max-w-[450px] min-w-[280px] p-4'>
-          <h2 className='text-3xl font-semibold'>
+          <h2 className='titulo-2'>
             Você não está sozinho, estamos aqui para te ajudar.
           </h2>
           <Linha />
           <p>
             Precisando de uma ajuda mais rápida? Veja{' '}
-            <span className='inline md:hidden'>acima</span>
+            <span className='inline md:hidden'>abaixo</span>
             <span className='hidden md:inline'>ao lado</span> se sua dúvida se
             encaixa em algum dos guias.
           </p>
