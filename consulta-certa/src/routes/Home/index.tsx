@@ -1,184 +1,228 @@
-import Titulo from "../../components/Titulo/Titulo"
-import Hero from '../../assets/images/carrossel-template1.png'
-import { GiHealthNormal } from "react-icons/gi"
-import HomeButton from "../../components/HomeButton/HomeButton"
-import { BiSolidBookReader } from "react-icons/bi";
-import { FaLaptopMedical } from "react-icons/fa";
-import { MdMedicalInformation } from "react-icons/md";
-import { FaUserDoctor } from "react-icons/fa6";
-import { RiSpeakAiFill } from "react-icons/ri";
-import { BsFillPinMapFill } from "react-icons/bs";
+import { useEffect, useState } from 'react'
+import Titulo from '../../components/Titulo/Titulo'
+import HomeButton from '../../components/HomeButton/HomeButton'
+import Linha from '../../components/Linha/Linha'
+import { BiSolidBookReader } from 'react-icons/bi'
+import { FaLaptopMedical } from 'react-icons/fa'
+import { MdMedicalInformation } from 'react-icons/md'
+import { FaUserDoctor } from 'react-icons/fa6'
+import { RiSpeakAiFill } from 'react-icons/ri'
+import { BsFillPinMapFill } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
+import Ajuda from '../../assets/images/carrossel-template1.png'
+import Ajuda2 from '../../assets/images/carrossel-template2.png'
+import Ajuda3 from '../../assets/images/carrossel-template3.png'
 import logoBID from '../../assets/images/logo_parceiro.png'
 import logoBP from '../../assets/images/logo_parceiro1.png'
 import logoUmane from '../../assets/images/logo_parceiro2.png'
 import logoSSSP from '../../assets/images/logo_parceiro3.png'
 
-function Home() {
-    return (
-        <main>
-            <Titulo titulo="Página Inicial" />
-            <section className="flex max-md:flex-col-reverse items-center justify-between min-h-[70vh]">
-                <div className="flex flex-col items-center w-[30vw] min-w-[280px] px-[2vw]">
-                    <ul className="flex justify-center w-full overflow-x-hidden gap-[2vw]">
-                        {/* Ainda por replicar em componentização */}
-                        <li className="card-inicial">
-                            <img src={Hero} alt="" />
-                            <p>GUIA: como ver minha teleconsulta</p>
-                        </li>
-                        <li className="card-inicial">
-                            <img src={Hero} alt="" />
-                            <p>GUIA: como ver minha teleconsulta</p>
-                        </li>
-                        <li className="card-inicial">
-                            <img src={Hero} alt="" />
-                            <p>GUIA: como ver minha teleconsulta</p>
-                        </li>
-                    </ul>
-                    <div className="flex justify-center gap-4">
-                        <span className="size-4 rounded-full bg-cc-azul mt-[2vh]"></span>
-                        <span className="size-4 rounded-full border-[0.25rem] border-gray-300 bg-gray-400 mt-[2vh]"></span>
-                        <span className="size-4 rounded-full border-[0.25rem] border-gray-300 bg-gray-400 mt-[2vh]"></span>
-                    </div>
-                </div>
-                <div className="max-w-[450px] min-w-[280px] p-4">
-                    <h2 className="text-3xl font-semibold">Você não está sozinho, estamos aqui para te ajudar.</h2>
-                    <div className="flex gap-1 items-center my-4">
-                        <GiHealthNormal className="text-[0.5rem] text-cc-azul" />
-                        <div className="h-1 w-[8vw] min-w-[100px] bg-cc-azul rounded-2xl my-[1vh]"></div>
-                    </div>
-                    <p>Precisando de uma ajuda mais rápida? Veja <span className="inline md:hidden">acima</span><span className="hidden md:inline">ao lado</span> se sua dúvida se encaixa em algum dos guias.</p>
-                </div>
-            </section>
+function Home () {
+  const [index, setIndex] = useState(0)
+  const [hover, setHover] = useState(false)
 
-            <section className="flex flex-col items-center justify-center min-h-[70vh] my-[5vh] bg-cc-cinza py-[4vh] w-full">
-                <h2 className="titulo-2">Navege por nossos serviços</h2>
-                <ul className="flex w-[60vw] min-w-[280px] flex-wrap justify-center px-[5vw] gap-x-[2%] gap-y-[4vh]">
-                    <HomeButton path="/guias/guia/:name" icon={BiSolidBookReader} label="Guia do aplicativo"/>
-                    <HomeButton path="/guias/guia/:name" icon={FaLaptopMedical} label="Como será sua consulta"/>
-                    <HomeButton path="/informacoes/:id" icon={FaUserDoctor} label="Profissionais da saúde"/>
-                    <HomeButton path="/informacoes/:id" icon={MdMedicalInformation} label="Cuidados pós consulta"/>
-                    <HomeButton path="/avaliar-teleconsulta" icon={RiSpeakAiFill} label="Como foi a teleconsulta"/>
-                    <HomeButton path="/localizar-ubs" icon={BsFillPinMapFill} label="UBS perto de mim"/>
-                </ul>
-            </section>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!hover) {
+        setIndex(prev => (prev + 1) % 3)
+      }
+    }, 4000) // 4 segundos por slide
 
-            <section className="flex flex-col items-center justify-center my-[5vh] py-[4vh] w-full">
-                <h2 className="titulo-2">Conheça nossos parceiros</h2>
-                <div>
-                    <ul className="[&_img]:h-[10vh]">
-                        <li>
-                            <a href="https://www.iadb.org/pt-br" target="_blank">
-                                <img src={logoBID} alt="Logo do banco interamericano de desenvolvimento"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.bp.org.br/" target="_blank">
-                                <img src={logoBP} alt="Logo da beneficiência portuguesa de são paulo"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://umane.org.br/" target="_blank">
-                                <img src={logoUmane} alt="Logo do grupo umane"/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://saude.sp.gov.br/" target="_blank">
-                                <img src={logoSSSP} alt="Logo da secretaria de saúde de são paulo"/>
-                            </a>
-                        </li>
-                    </ul>
+    return () => clearInterval(interval)
+  }, [hover])
+
+  return (
+    <main>
+      <Titulo titulo='Página Inicial' />
+
+      <section className='flex max-md:flex-col-reverse items-center justify-between min-h-[66vh]'>
+        <aside className='flex flex-col items-center w-[30vw] min-w-[280px] px-[2vw]'>
+          <div className='relative w-full overflow-hidden'>
+            <ul
+              className={`flex transition-transform duration-700 ease-in-out ${
+                index === 0
+                  ? '-translate-x-0'
+                  : index === 1
+                  ? '-translate-x-full'
+                  : '-translate-x-[200%]'
+              }`}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              <li className='min-w-full'>
+                <div className='flex justify-center px-[2vw]'>
+                  <Link
+                    to='/guias/guia/como-mudar-minha-senha-no-portal-hc'
+                    className='card-inicial flex flex-col items-center text-center'
+                  >
+                    <img src={Ajuda} alt='' aria-hidden='true' />
+                    <p>GUIA: Como mudar minha senha no Portal HC</p>
+                  </Link>
                 </div>
-            </section>
-        </main>
+              </li>
+              <li className='min-w-full'>
+                <div className='flex justify-center px-[2vw]'>
+                  <Link
+                    to='/guias/guia/como-fazer-login-pelo-gov-br-no-portal-hc'
+                    className='card-inicial flex flex-col items-center text-center'
+                  >
+                    <img src={Ajuda2} alt='' aria-hidden='true' />
+                    <p>GUIA: Como fazer login pelo gov.br no Portal HC</p>
+                  </Link>
+                </div>
+              </li>
+              <li className='min-w-full'>
+                <div className='flex justify-center px-[2vw]'>
+                  <Link
+                    to='/guias/guia/cuidados'
+                    className='card-inicial flex flex-col items-center text-center'
+                  >
+                    <img src={Ajuda3} alt='' aria-hidden='true' />
+                    <p>DICA: Avalie suas teleconsultas</p>
+                  </Link>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <nav className='flex justify-center gap-4 mt-[2vh]'>
+            {[0, 1, 2].map(i => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                className={`size-4 rounded-full ${
+                  index === i
+                    ? 'bg-cc-azul'
+                    : 'border-[0.25rem] border-gray-300 bg-gray-400'
+                }`}
+                aria-label={`Ir para slide ${i + 1}`}
+              />
+            ))}
+          </nav>
+        </aside>
 
-        /*
-        <main>
-            <section className="hero">
-                <section>
-                    <div className="figure"></div>
-                    <img src="./assets/images/banner_hero.png"
-                        alt="Imagem ilustrativa de atendimento médico atencioso."/>
-                    <div className="figure-inversa"></div>
-                </section>
-                <p>Você não está sozinho, estamos aqui para ajudar.</p>
-            </section>
-            <form action="#" method="get">
-                <label htmlFor="searchBar">
-                    <img src="./assets/images/icon_search_bar.png" alt="Ícone de lupa"/>
-                    <input type="search" name="search" id="searchBar" placeholder="Buscar..."/>
-                </label>
-            </form>
-            <section className="menu">
-                <a href="./pages/guiaHC.html" className="buttonHome">
-                    <img src="./assets/images/variant-icon_guia.png" alt="Ícone de guia"/>
-                    <p>Guia do aplicativo</p>
-                </a>
-                <a href="./pages/guiaTeleconsulta.html" className="buttonHome">
-                    <img src="./assets/images/icon_teleconsulta.png" alt="Ícone de computador com simbolo de saúde"/>
-                    <p>Como será sua consulta</p>
-                </a>
-                <a href="#" className="buttonHome">
-                    <img src="./assets/images/icon_info_medicos.png" alt="Ícone de médico"/>
-                    <p>Profissionais da saúde</p>
-                </a>
-                <a href="#" className="buttonHome">
-                    <img src="./assets/images/icon_info_saúde.png" alt="Ícone de estetoscópio"/>
-                    <p>Cuidados pós consulta</p>
-                </a>
-                <a href="#" className="buttonHome">
-                    <img src="./assets/images/icon_feedback.png" alt="Ícone de pessoa dando feedback"/>
-                    <p>Como foi a teleconsulta</p>
-                </a>
-                <a href="https://www.hc.fm.usp.br/hc/institucional/unidades" target="_blank" className="buttonHome">
-                    <img src="./assets/images/icon_localizacao.png" alt="Ícone de localização"/>
-                    <p>UBS perto de mim</p>
-                </a>
-            </section>
-            <section className="parcerias">
-                <h2>Conheça nossos parceiros</h2>
-                <div className="line"></div>
-                <section className="carrosselParcerias">
-                    <section className="parceiros">
-                        <a href="https://www.iadb.org/pt-br" target="_blank">
-                            <img src="./assets/images/logo_parceiro.png"
-                                alt="Logo do banco interamericano de desenvolvimento"/>
-                        </a>
-                        <a href="https://www.bp.org.br/" target="_blank">
-                            <img src="./assets/images/logo_parceiro1.png"
-                                alt="Logo da beneficiência portuguesa de são paulo"/>
-                        </a>
-                        <a href="https://umane.org.br/" target="_blank">
-                            <img src="./assets/images/logo_parceiro2.png" alt="Logo do grupo umane"/>
-                        </a>
-                        <a href="https://saude.sp.gov.br/" target="_blank">
-                            <img src="./assets/images/logo_parceiro3.png"
-                                alt="Logo da secretaria de saúde de são paulo"/>
-                        </a>
-                    </section>
-                    <section aria-hidden className="parceiros">
-                        <a href="https://www.iadb.org/pt-br" target="_blank">
-                            <img src="./assets/images/logo_parceiro.png"
-                                alt="Logo do banco interamericano de desenvolvimento"/>
-                        </a>
-                        <a href="https://www.bp.org.br/" target="_blank">
-                            <img src="./assets/images/logo_parceiro1.png"
-                                alt="Logo da beneficiência portuguesa de são paulo"/>
-                        </a>
-                        <a href="https://umane.org.br/" target="_blank">
-                            <img src="./assets/images/logo_parceiro2.png" alt="Logo do grupo umane"/>
-                        </a>
-                        <a href="https://saude.sp.gov.br/" target="_blank">
-                            <img src="./assets/images/logo_parceiro3.png"
-                                alt="Logo da secretaria de saúde de são paulo"/>
-                        </a>
-                    </section>
-                </section>
-                <div className="line"></div>
-            </section>
-        </main>
-        */
-    )
+        <div className='max-w-[450px] min-w-[280px] p-4'>
+          <h2 className='text-3xl font-semibold'>
+            Você não está sozinho, estamos aqui para te ajudar.
+          </h2>
+          <Linha />
+          <p>
+            Precisando de uma ajuda mais rápida? Veja{' '}
+            <span className='inline md:hidden'>acima</span>
+            <span className='hidden md:inline'>ao lado</span> se sua dúvida se
+            encaixa em algum dos guias.
+          </p>
+        </div>
+      </section>
+
+      <section className='flex flex-col items-center justify-center min-h-[70vh] my-[10vh] bg-cc-cinza py-[4vh] w-[112%]'>
+        <h2 className='titulo-2'>Navegue por nossos serviços</h2>
+        <ul className='flex w-[60vw] min-w-[280px] flex-wrap justify-center mt-[4vh] px-[5vw] gap-x-[2%] gap-y-[4vh]'>
+          <HomeButton
+            path='/guias/guia/:name'
+            icon={BiSolidBookReader}
+            label='Guia do aplicativo'
+          />
+          <HomeButton
+            path='/guias/guia/:name'
+            icon={FaLaptopMedical}
+            label='Como será sua consulta'
+          />
+          <HomeButton
+            path='/informacoes/:id'
+            icon={FaUserDoctor}
+            label='Profissionais da saúde'
+          />
+          <HomeButton
+            path='/informacoes/:id'
+            icon={MdMedicalInformation}
+            label='Cuidados pós consulta'
+          />
+          <HomeButton
+            path='/avaliar-teleconsulta'
+            icon={RiSpeakAiFill}
+            label='Como foi a teleconsulta'
+          />
+          <HomeButton
+            path='/localizar-ubs'
+            icon={BsFillPinMapFill}
+            label='UBS perto de mim'
+          />
+        </ul>
+      </section>
+
+      <section className='flex flex-col items-center justify-center mb-[5vh] py-[2vh] w-full'>
+        <h2 className='titulo-2'>Conheça nossos parceiros</h2>
+        <div className='flex items-center w-full mt-[4vh] py-[4vh] overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]'>
+          <ul className='flex items-center justify-center [&_li]:mx-8 [&_img]:max-w-none [&_img]:h-[10vh] animate-infinite-scroll'>
+            <li>
+              <a href='https://www.iadb.org/pt-br' target='_blank'>
+                <img
+                  src={logoBID}
+                  alt='Logo do banco interamericano de desenvolvimento'
+                />
+              </a>
+            </li>
+            <li>
+              <a href='https://www.bp.org.br/' target='_blank'>
+                <img
+                  src={logoBP}
+                  alt='Logo da beneficiência portuguesa de são paulo'
+                />
+              </a>
+            </li>
+            <li>
+              <a href='https://umane.org.br/' target='_blank'>
+                <img src={logoUmane} alt='Logo do grupo umane' />
+              </a>
+            </li>
+            <li>
+              <a href='https://saude.sp.gov.br/' target='_blank'>
+                <img
+                  src={logoSSSP}
+                  alt='Logo da secretaria de saúde de são paulo'
+                />
+              </a>
+            </li>
+          </ul>
+          <ul
+            className='flex items-center justify-center [&_li]:mx-8 [&_img]:max-w-none [&_img]:h-[10vh] animate-infinite-scroll'
+            aria-hidden
+          >
+            <li>
+              <a href='https://www.iadb.org/pt-br' target='_blank'>
+                <img
+                  src={logoBID}
+                  alt='Logo do banco interamericano de desenvolvimento'
+                />
+              </a>
+            </li>
+            <li>
+              <a href='https://www.bp.org.br/' target='_blank'>
+                <img
+                  src={logoBP}
+                  alt='Logo da beneficiência portuguesa de são paulo'
+                />
+              </a>
+            </li>
+            <li>
+              <a href='https://umane.org.br/' target='_blank'>
+                <img src={logoUmane} alt='Logo do grupo umane' />
+              </a>
+            </li>
+            <li>
+              <a href='https://saude.sp.gov.br/' target='_blank'>
+                <img
+                  src={logoSSSP}
+                  alt='Logo da secretaria de saúde de são paulo'
+                />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  )
 }
 
 export default Home
