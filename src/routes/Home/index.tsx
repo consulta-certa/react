@@ -36,7 +36,7 @@ function Home () {
     <main>
       <Titulo titulo='Página Inicial' />
 
-      <section className='flex max-md:flex-col-reverse items-center justify-between min-h-[66vh]'>
+      <section className='flex max-md:flex-col-reverse items-center justify-between min-h-[60vh]'>
         <aside className='flex flex-col items-center w-[30vw] min-w-[280px] px-[2vw]'>
           <div className='relative w-full overflow-hidden'>
             <ul

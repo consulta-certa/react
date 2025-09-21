@@ -1,18 +1,31 @@
-import { useEffect } from 'react'
+// VLibrasWidget.tsx
+import { useEffect } from 'react';
 
 function VLibras () {
   useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
-    script.async = true
+    const script = document.createElement('script');
+    script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+    script.async = true;
     script.onload = () => {
-      // @ts-ignore
-      new window.VLibras.Widget('https://vlibras.gov.br/app')
-    }
-    document.body.appendChild(script)
-  }, [])
+      new (window as any).VLibras.Widget('https://vlibras.gov.br/app');
+    };
+    document.body.appendChild(script);
+  }, []);
 
-  return null
-}
+  return (
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `
+          <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+              <div class="vw-plugin-top-wrapper"></div>
+            </div>
+          </div>
+        `,
+      }}
+    />
+  );
+};
 
-export default VLibras
+export default VLibras;
