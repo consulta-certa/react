@@ -6,7 +6,7 @@ function Cadastro () {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    navigate('/perfil', { replace: true })
+    navigate('/lembretes', { replace: true })
   }
 
   return (

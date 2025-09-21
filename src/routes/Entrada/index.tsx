@@ -6,7 +6,7 @@ function Entrada() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    navigate('/perfil', { replace: true })
+    navigate('/lembretes', { replace: true })
   }
 
   return (
@@ -20,7 +20,7 @@ function Entrada() {
                 <label htmlFor='idEmail'>
                   Email <span className='text-red-500 font-bold'>*</span>
                 </label>
-                <input type='email' name='email' id='idEmail' required />
+                <input type='email' name='email' id='idEmail' />
               </div>
             </div>
             <div>
@@ -28,7 +28,7 @@ function Entrada() {
                 <label htmlFor='idSenha'>
                   Senha <span className='text-red-500 font-bold'>*</span>
                 </label>
-                <input type='password' name='senha' id='idSenha' required />
+                <input type='password' name='senha' id='idSenha' />
               </div>
             </div>
           </fieldset>

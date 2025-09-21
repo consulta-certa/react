@@ -31,7 +31,7 @@ function Header() {
                     <NavElement path="/quem-somos" icon={RiTeamFill} label="Quem somos"/>
                     <NavElement path="/contato" icon={IoMdChatboxes} label="Contato"/>
                     <NavElement path="/avaliar-teleconsulta" icon={MdRateReview} label="Avaliações"/>
-                    <NavElement path="/lembretes" icon={TbBellRingingFilled} label="Lembretes"/>
+                    <NavElement path="/cadastrar" icon={TbBellRingingFilled} label="Lembretes"/>
                     <NavElement path="/perfil" icon={IoPersonCircle} label="Perfil"/>
                 </ul>
             </nav>

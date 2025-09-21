@@ -38,9 +38,9 @@ function ListaGuias () {
       <Titulo titulo='Guias'></Titulo>
       <h2 className='titulo-2'>Qual tipo de ajuda você gostaria?</h2>
 
-      <section className='flex max-md:flex-col justify-between min-w-[280px] px-[1vw]'>
+      <section className='flex max-md:flex-col justify-between min-w-[280px] px-[1vw] mt-[2vh]'>
         <div className='flex items-center flex-col gap-[2vh]'>
-          <button className='text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl bg-cc-cinza hover:translate-x-4 transition-all ease-in duration-200' onClick={()=>setCategoria(0)}>
+          <button className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${categoria == 1 ? 'bg-cc-cinza' : 'bg-cc-azul'}`} onClick={()=>setCategoria(0)}>
             <img
               src={imageTest}
               alt=''
@@ -48,7 +48,7 @@ function ListaGuias () {
             />
             Portal do Paciente HC
           </button>
-          <button className='text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl bg-cc-cinza hover:translate-x-4 transition-all ease-in duration-200' onClick={()=>setCategoria(1)}>
+          <button className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${categoria == 0 ? 'bg-cc-cinza' : 'bg-cc-azul'}`} onClick={()=>setCategoria(1)}>
             <img
               src={imageTest}
               alt=''
@@ -57,7 +57,7 @@ function ListaGuias () {
             Teleconsulta
           </button>
         </div>
-        <ul className='flex flex-col items-center bg-cc-cinza px-8 h-[44vh] py-4 overflow-y-scroll gap-[2vh]'>
+        <ul className='flex flex-col items-center bg-cc-azul px-8 h-[44vh] py-4 overflow-y-scroll gap-[2vh]'>
           {(categoria == 0 ? guiasPortal : guiasTeleconsulta).map(guia => (
             <ItemLista
               path={converterPath(guia.titulo)}

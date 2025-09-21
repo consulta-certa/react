@@ -41,10 +41,10 @@ function Guia () {
         <section className='w-[20vw] max-md:w-[80vw] min-w-[280px] p-4 rounded-2xl bg-cc-azul'>
           {guia.video ? (
             <video controls className='bg-black h-[50vh]'>
-              <source src={`/${guia.video}`} type='video/mp4' />
+              <source src={`/media/${guia.video}`} type='video/mp4' />
             </video>
           ) : guia.imagem ? (
-            <img src={`/${guia.imagem}`} alt='' className='h-[50vh]' />
+            <img src={`/media/${guia.imagem}`} alt='' className='h-[50vh]' />
           ) : (
             ''
           )}
