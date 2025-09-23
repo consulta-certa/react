@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
+import { formatarData } from '../../utils/formatarData'
 
 function Lembretes () {
   const navigate = useNavigate()
@@ -44,7 +45,7 @@ function Lembretes () {
     try {
       const consultaPayload = {
         especialidade,
-        data_consulta: dataSelecionada,
+        data_consulta: formatarData(dataSelecionada),
         status: true,
         id_paciente: paciente!.id_paciente
       }
@@ -63,9 +64,12 @@ function Lembretes () {
       const jsonPayload = {
         nome: paciente!.nome,
         email: paciente!.email,
+        telefone: paciente!.telefone,
         especialidade: consultaCriada.especialidade,
         data_consulta: consultaCriada.data_consulta
       }
+
+      console.log(jsonPayload)
 
       const lembreteRes = await fetch('http://localhost:5000/api/set-reminder', {
         method: 'POST',

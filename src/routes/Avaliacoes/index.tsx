@@ -3,6 +3,7 @@ import { FaStar } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import Titulo from '../../components/Titulo/Titulo'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
+import { formatarData } from '../../utils/formatarData'
 
 function Avaliacoes () {
   const [enviado, setEnviado] = useState(false)
@@ -17,7 +18,7 @@ function Avaliacoes () {
     e.preventDefault()
     setErro('')
 
-    const data = new Date(dataSelecionada)
+    const data = new Date((dataSelecionada))
     const hoje = new Date()
     const limite = new Date()
     limite.setDate(hoje.getDate() - 14)
@@ -36,7 +37,7 @@ function Avaliacoes () {
       const avaliacaoPayload = {
         nota,
         comentario,
-        data_valiacao: new Date().toISOString()
+        data_valiacao: formatarData(dataSelecionada)
       }
 
       const response = await fetch('http://localhost:3001/avaliacoes', {
