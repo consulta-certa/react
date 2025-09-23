@@ -17,6 +17,7 @@ import QuemSomos from './routes/QuemSomos'
 import Termos from './routes/Termos'
 import Cadastro from './routes/Cadastro'
 import Entrada from './routes/Entrada'
+import { AuthProvider } from './context/AuthContext'
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 )

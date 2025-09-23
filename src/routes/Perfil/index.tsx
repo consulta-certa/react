@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function Perfil() {
     const navigate = useNavigate();
+    const { paciente } = useAuth();
 
     useEffect(()=> {
-        navigate('/cadastrar', { replace: true })
+        if (!paciente) {
+            navigate('/cadastrar', { replace: true })
+        }
     }, [])
 
     return(

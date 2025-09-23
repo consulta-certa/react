@@ -1,14 +1,36 @@
 import type React from 'react'
 import Titulo from '../../components/Titulo/Titulo'
-import { useState } from 'react'
 import ItemLembrete from '../../components/ItemLembrete/ItemLembrete'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
+import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
 
 function Lembretes () {
-  const [dataSelecionada, setDataSelecionada] = useState('')
-  const [erro, setErro] = useState('')
+  const navigate = useNavigate()
+  const { paciente } = useAuth()
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    if (!paciente) {
+      navigate('/cadastrar', { replace: true })
+    }
+  }, [paciente, navigate])
+
+  const [dataSelecionada, setDataSelecionada] = useState('')
+  const [especialidade, setEspecialidade] = useState('')
+  const [erro, setErro] = useState('')
+  const [enviado, setEnviado] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setErro('')
+    setEnviado(false)
+
+    if (!especialidade || !dataSelecionada) {
+      setErro('Preencha todos os campos obrigatórios.')
+      return
+    }
+
     const data = new Date(dataSelecionada)
     const hoje = new Date()
     const limite = new Date()
@@ -19,7 +41,44 @@ function Lembretes () {
       return
     }
 
-    setErro('')
+    try {
+      const consultaPayload = {
+        especialidade,
+        data_consulta: dataSelecionada,
+        status: true,
+        id_paciente: paciente!.id_paciente
+      }
+
+      const consultaRes = await fetch('http://localhost:3001/consultas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(consultaPayload)
+      })
+
+      if (!consultaRes.ok) throw new Error('Erro ao registrar consulta.')
+
+      const consultaCriada = await consultaRes.json()
+
+      
+      const jsonPayload = {
+        nome: paciente!.nome,
+        email: paciente!.email,
+        especialidade: consultaCriada.especialidade,
+        data_consulta: consultaCriada.data_consulta
+      }
+
+      const lembreteRes = await fetch('http://localhost:5000/api/set-reminder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jsonPayload)
+      })
+
+      if (!lembreteRes.ok) throw new Error('Erro ao enviar lembrete.')
+
+      setEnviado(true)
+    } catch (err) {
+      setErro('Erro ao processar o lembrete. Tente novamente.')
+    }
   }
 
   return (
@@ -29,9 +88,8 @@ function Lembretes () {
         <section className='w-[50%] max-md:w-full'>
           <h2 className='titulo-2'>Seus lembretes</h2>
           <ul className='flex flex-col gap-[2vh] w-full mt-[4vh] h-[40vh] pr-[2vw] overflow-scroll'>
-            <ItemLembrete especialidade='especialidade' horario='01/01/2025 23:59' canal='email'/>
-            <ItemLembrete especialidade='especialidade' horario='01/01/2025 23:59' canal='email'/>
-            <ItemLembrete especialidade='especialidade' horario='01/01/2025 23:59' canal='email'/>
+            <ItemLembrete especialidade='Cardiologista' horario='01/01/2025 23:59' canal='email' />
+            <ItemLembrete especialidade='Neurologista' horario='02/01/2025 10:00' canal='sms' />
           </ul>
         </section>
         <section className='w-[32%] max-md:w-full'>
@@ -42,18 +100,16 @@ function Lembretes () {
               <fieldset>
                 <div className='input-container'>
                   <label htmlFor='idConsulta'>
-                    Qual é sua teleconsulta?{' '}
-                    <span className='text-red-500 font-bold'>*</span>{' '}
+                    Qual é sua teleconsulta? <span className='text-red-500 font-bold'>*</span>
                   </label>
                   <select
                     name='consulta'
                     id='idConsulta'
-                    defaultValue=''
+                    value={especialidade}
+                    onChange={e => setEspecialidade(e.target.value)}
                     required
                   >
-                    <option value='' disabled>
-                      Selecione uma opção
-                    </option>
+                    <option value='' disabled>Selecione uma opção</option>
                     <option value='fisioterapeuta'>Fisioterapeuta</option>
                     <option value='cardiologista'>Cardiologista</option>
                     <option value='neurologista'>Neurologista</option>
@@ -63,86 +119,26 @@ function Lembretes () {
                 </div>
                 <div className='input-container'>
                   <label htmlFor='idDataConsulta'>
-                    Quando será sua teleconsulta?{' '}
-                    <span className='text-red-500 font-bold'>*</span>{' '}
+                    Quando será sua teleconsulta? <span className='text-red-500 font-bold'>*</span>
                   </label>
                   <input
                     type='datetime-local'
                     id='idDataConsulta'
                     name='dataConsulta'
-                    required
+                    value={dataSelecionada}
                     onChange={e => setDataSelecionada(e.target.value)}
+                    required
                   />
                 </div>
-                <div className='input-container'>
-                  <label htmlFor='idCanalEnvio'>
-                    Por onde quer que receber o lembrete?{' '}
-                    <span className='text-red-500 font-bold'>*</span>{' '}
-                  </label>
-                  <select
-                    name='canalEnvio'
-                    id='idCanalEnvio'
-                    defaultValue=''
-                    required
-                  >
-                    <option value='' disabled>
-                      Selecione uma opção
-                    </option>
-                    <option value='fisioterapeuta'>Email</option>
-                    <option value='cardiologista'>SMS (Telefone)</option>
-                    <option value='neurologista'>Telegram</option>
-                  </select>
-                </div>
               </fieldset>
-              <button type='button'>Registrar</button>
+              <button type='submit'>Registrar</button>
             </form>
           </section>
         </section>
       </div>
-    </main>
 
-    /*
-        <main>
-            <section className="titulo">
-                <h1>Criar Lembrete</h1>
-            </section>
-            <form id="formLembretes" action="#">
-                <fieldset>
-                    <label htmlFor="nome">
-                        <img src="../assets/images/icon_nome.png" alt="Ícone de pessoa"/>
-                        <input type="text" name="nome" id="nome" placeholder="Nome completo" required/>
-                    </label>
-                    <label htmlFor="email">
-                        <img src="../assets/images/icon_email.png" alt="Ícone de email"/>
-                        <input type="email" name="email" id="email" placeholder="Email" required/>
-                    </label>
-                    <label htmlFor="emailReserva">
-                        <img src="../assets/images/icon_email.png" alt="Ícone de email"/>
-                        <input type="emailReserva" name="emailReserva" id="emailReserva" placeholder="Mais um email"/>
-                    </label>
-                    <label htmlFor="telefone">
-                        <img src="../assets/images/icon_telefone.png" alt="Ícone de telefone"/>
-                        <input type="tel" name="telefone" id="telefone" placeholder="Número de telefone" required/>
-                    </label>
-                    <label htmlFor="telefoneReserva">
-                        <img src="../assets/images/icon_telefone.png" alt="Ícone de telefone"/>
-                        <input type="tel" name="telefoneReserva" id="telefoneReserva"
-                            placeholder="Mais um número de telefone"/>
-                    </label>
-                    <label htmlFor="nomeConsulta">
-                        <img src="../assets/images/icon_consulta.png" alt="Ícone de primeiros socorros"/>
-                        <input type="text" name="nomeConsulta" id="nomeConsulta" placeholder="Consulta" required/>
-                    </label>
-                    <label htmlFor="dataLembrete">
-                        <img src="../assets/images/icon_data.png" alt="Ícone de calendario"/>
-                        <input type="date" name="dataLembrete" id="dataLembrete" placeholder="Data da consulta"
-                            required/>
-                    </label>
-                </fieldset>
-                <input type="submit" id="criar-lembrete" className="botao" value="Criar Lembrete"/>
-            </form>
-        </main>
-        */
+      <ModalConfirmar operacao={()=>navigate('/')} mensagem='Lembrete Registrado! Ele será enviado por email' enviado={enviado}/>
+    </main>
   )
 }
 

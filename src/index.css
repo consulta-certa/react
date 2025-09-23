@@ -104,6 +104,10 @@
     }
   }
 
+  .form-erro {
+    @apply px-2 text-red-400 mx-auto p-2 rounded-lg bg-red-50 outline-red-400 outline-1 text-center
+  }
+
   .detalhes-laterais {
     @apply before:content-[""] before:w-[2vw] before:h-4/5 before:bg-cc-cinza-escuro before:rounded-l-xl before:absolute before:-left-[2vw] after:content-[""] after:w-[2vw] after:h-4/5 after:bg-cc-cinza-escuro after:rounded-r-xl after:absolute after:-right-[2vw];
   }
