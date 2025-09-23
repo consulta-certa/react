@@ -39,12 +39,12 @@ def get_next_id(conn, table_name, id_column):
     cursor.close()
     return next_id
 
-
 @app.route("/api/set-reminder", methods=["POST"])
 def set_reminder():
     data = request.get_json()
     email = data.get("email")
     telefone = data.get("telefone")
+    nome = data.get("nome", "Paciente")  # Novo: Usa nome do JSON, fallback "Paciente"
     data_consulta_str = data.get("data_consulta")  
     especialidade = data.get("especialidade", "geral")
 
@@ -63,11 +63,13 @@ def set_reminder():
     try:
         cursor = conn.cursor()
 
-        # 1. Verificar se paciente existe pelo email, senão inserir
+        # 1. Verificar se paciente existe pelo email, senão inserir (agora com nome real)
         cursor.execute("SELECT id_paciente FROM pacientes WHERE email = :email", {"email": email})
         paciente = cursor.fetchone()
         if paciente:
             id_paciente = paciente[0]
+            #UPDATE; nome se já existir
+            cursor.execute("UPDATE pacientes SET nome = :nome WHERE id_paciente = :id_paciente", {"nome": nome, "id_paciente": id_paciente})
         else:
             id_paciente = get_next_id(conn, "pacientes", "id_paciente")
             cursor.execute("""
@@ -75,7 +77,7 @@ def set_reminder():
                 VALUES (:id_paciente, :nome, :email, :telefone)
             """, {
                 "id_paciente": id_paciente,
-                "nome": "Paciente",
+                "nome": nome,  # Usa nome do JSON
                 "email": email,
                 "telefone": telefone or ""
             })
@@ -109,7 +111,7 @@ def set_reminder():
             })
             lembretes.append({
                 "id_lembrete": id_lembrete,
-                "canal_envio": "email",
+                "canal_envio": "email",  # Futuro: Use data.get("canal")
                 "data_envio": data_envio.strftime("%d/%m/%Y %H:%M"),
                 "id_consulta": id_consulta
             })
@@ -126,13 +128,13 @@ def set_reminder():
 
     except Exception as e:
         import traceback
-        traceback.print_exc() #Error
+        traceback.print_exc()
         if conn:
             conn.rollback()
             conn.close()
         return jsonify({"error": "Erro ao salvar dados"}), 500
     
-# FUNCAO API SENDGRID -  emailENVIANDO
+# FUNCAO API SENDGRID - emailENVIANDO
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 def enviar_email(destinatario, data_consulta):
     if not SENDGRID_API_KEY:
@@ -162,8 +164,6 @@ def test_email():
         return "Email enviado com sucesso!"
     else:
         return "Falha ao enviar email.", 500
-    
-from apscheduler.schedulers.background import BackgroundScheduler
 
 def enviar_lembretes_pendentes():
     print("Verificando lembretes pendentes para envio...")
@@ -216,17 +216,13 @@ def enviar_lembretes_pendentes():
             conn.rollback()
             conn.close()
 
-from apscheduler.schedulers.background import BackgroundScheduler
 scheduler = BackgroundScheduler()
 scheduler.add_job(func=enviar_lembretes_pendentes, trigger="interval", minutes=10)
 scheduler.start()
 # Para garantir que o scheduler pare junto com o Flask
 atexit.register(lambda: scheduler.shutdown())
 
-
 print("SendGrid API Key:", SENDGRID_API_KEY)
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
-
-
