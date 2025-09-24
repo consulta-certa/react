@@ -75,7 +75,7 @@ function Home () {
               <li className='min-w-full'>
                 <div className='flex justify-center px-[2vw]'>
                   <Link
-                    to='/guias/guia/cuidados'
+                    to='/avaliar-teleconsulta'
                     className='card-inicial flex flex-col items-center text-center'
                   >
                     <img src={Ajuda3} alt='' aria-hidden='true' />
