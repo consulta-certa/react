@@ -10,7 +10,7 @@ import { RiTeamFill } from 'react-icons/ri'
 import { IoMdChatboxes } from 'react-icons/io'
 import { MdRateReview } from 'react-icons/md'
 import { TbBellRingingFilled } from 'react-icons/tb'
-import { IoPersonCircle } from 'react-icons/io5'
+import { IoCloseSharp, IoPersonCircle } from 'react-icons/io5'
 import { FaBars } from 'react-icons/fa'
 import { useState } from 'react'
 
@@ -45,12 +45,12 @@ function Header () {
         </ul>
       </nav>
       <nav className='hidden max-lg:block fixed left-0 bottom-0 w-full px-[2vw] z-1000 h-[12vh] text-lg'>
-        <ul className='w-full justify-start h-full gap-4 ml-[1vw]'>
+        <ul className='flex w-full justify-start h-full gap-4 ml-[1vw]'>
           <NavElement path='/' icon={AiFillHome} label='Início' />
           <NavElement path='/guias' icon={BiSolidBookReader} label='Guias' />
           <NavElement path='/ajuda' icon={MdLiveHelp} label='Ajuda' />
           <button className='flex flex-col items-center' onClick={()=>setAberto(aberto ? false : true)}>
-            <FaBars className='text-xl'/>
+            { aberto ? <IoCloseSharp className='text-2xl text-cc-azul' /> : <FaBars className='text-lg' /> }
             <p>{ aberto ? 'Fechar' : 'Mais'}</p>
           </button>
         </ul>
