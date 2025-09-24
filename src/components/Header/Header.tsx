@@ -12,8 +12,10 @@ import { MdRateReview } from 'react-icons/md'
 import { TbBellRingingFilled } from 'react-icons/tb'
 import { IoPersonCircle } from 'react-icons/io5'
 import { FaBars } from 'react-icons/fa'
+import { useState } from 'react'
 
 function Header () {
+  const [aberto, setAberto] = useState(false)
 
   return (
     <header className='header'>
@@ -47,7 +49,20 @@ function Header () {
           <NavElement path='/' icon={AiFillHome} label='Início' />
           <NavElement path='/guias' icon={BiSolidBookReader} label='Guias' />
           <NavElement path='/ajuda' icon={MdLiveHelp} label='Ajuda' />
-          <NavElement path='/item' icon={FaBars} label='Mais' />
+          <button className='flex flex-col items-center' onClick={()=>setAberto(aberto ? false : true)}>
+            <FaBars className='text-xl'/>
+            <p>{ aberto ? 'Fechar' : 'Mais'}</p>
+          </button>
+        </ul>
+      </nav>
+      <nav className={`hidden max-lg:block fixed bottom-[14vh] p-4 z-1000 text-lg transition-transform duration-300 ease-in rounded-xl shadow-sm ${aberto ? 'translate-y-0' : 'translate-y-[150vh]'}`}>
+        <ul className='flex flex-col w-full items-center h-full gap-4 '>
+          <NavElement path='/quem-somos' icon={RiTeamFill} label='Quem somos' />
+          <NavElement path='/contato' icon={IoMdChatboxes} label='Contato' />
+          <NavElement path='/avaliar-teleconsulta' icon={MdRateReview} label='Avaliações'
+          />
+          <NavElement path='/lembretes' icon={TbBellRingingFilled} label='Lembretes' />
+          <NavElement path='/perfil' icon={IoPersonCircle} label='Perfil' />
         </ul>
       </nav>
     </header>

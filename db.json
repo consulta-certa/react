@@ -129,6 +129,12 @@
       "especialidade": "cardiologista",
       "data_consulta": "24/09/2025 12:04",
       "status": true
+    },
+    {
+      "id": "53b0",
+      "especialidade": "fisioterapeuta",
+      "data_consulta": "25/09/2025 07:38",
+      "status": true
     }
   ],
   "contatos": [
@@ -249,6 +255,14 @@
       "telefone": "1112345678",
       "email": "gustavobosaksantos@gmail.com",
       "senha": "123456",
+      "acompanhante": false
+    },
+    {
+      "id": "1a96",
+      "nome": "felte",
+      "telefone": "11112341234",
+      "email": "felipeferretelemes@gmail.com",
+      "senha": "senha123",
       "acompanhante": false
     }
   ]
