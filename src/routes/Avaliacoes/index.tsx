@@ -18,7 +18,7 @@ function Avaliacoes () {
     e.preventDefault()
     setErro('')
 
-    const data = new Date((dataSelecionada))
+    const data = new Date(dataSelecionada)
     const hoje = new Date()
     const limite = new Date()
     limite.setDate(hoje.getDate() - 14)
@@ -57,7 +57,6 @@ function Avaliacoes () {
   return (
     <main>
       <Titulo titulo='Avaliação' />
-      <ModalConfirmar operacao={()=>navigate('/')} mensagem='Obrigado pela sua avaliação!' enviado={enviado}/>
       <section className='form'>
         {erro && <p className='form-erro'>{erro}</p>}
         <form onSubmit={handleSubmit}>
@@ -141,6 +140,12 @@ function Avaliacoes () {
           <button type='submit'>Enviar avaliação</button>
         </form>
       </section>
+
+      <ModalConfirmar
+        operacao={() => navigate('/')}
+        mensagem='Obrigado pela sua avaliação!'
+        enviado={enviado}
+      />
     </main>
   )
 }

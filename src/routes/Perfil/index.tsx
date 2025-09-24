@@ -1,68 +1,57 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
+import Titulo from '../../components/Titulo/Titulo'
+import Linha from '../../components/Linha/Linha'
+import { FaMailBulk } from 'react-icons/fa'
 
-function Perfil() {
-    const navigate = useNavigate();
-    const { paciente } = useAuth();
+function Perfil () {
+  const { paciente, logout } = useAuth()
+  const navigate = useNavigate()
 
-    useEffect(()=> {
-        if (!paciente) {
-            navigate('/cadastrar', { replace: true })
-        }
-    }, [])
+  const handleLogout = () => {
+    logout()
+    navigate('/entrar', { replace: true })
+  }
 
-    return(
-        <main>
-            <section className="titulo">
-                <h1>Perfil</h1>
-                <p>Aqui estão seus dados para lembrete</p>
-            </section>
-            <section className="containerDadosPerfil">
-                <section>
-                    <h3>Dados usuário</h3>
-                    <img src="../assets/images/icon_lapis.png" alt="Ícone de lápis" className="icon"/>
-                </section>
-                <ul id="dadosUsuario">
-                    <li className="campoPerfil1">
-                        <p>Nome Completo</p>
-                    </li>
-                    <li className="campoPerfil2">
-                        <p>email@email.com</p>
-                    </li>
-                    <li className="campoPerfil3">
-                        <p>11 91234 - 5678</p>
-                    </li>
-                </ul>
-            </section>
-            <section className="containerDadosPerfil">
-                <section>
-                    <h3>Endereço</h3>
-                    <img src="../assets/images/icon_lapis.png" alt="Ícone de lápis" className="icon"/>
-                </section>
-                <ul id="dadosEndereco">
-                    <li className="campoEndereco1">
-                        <p>Rua do Logradouro</p>
-                    </li>
-                    <li className="campoEndereco2">
-                        <p>123</p>
-                    </li>
-                    <li className="campoEndereco3">
-                        <p>01.234-567</p>
-                    </li>
-                    <li className="campoEndereco4">
-                        <p>Jardim Bairros</p>
-                    </li>
-                    <li className="campoEndereco5">
-                        <p>Distrito Cidade</p>
-                    </li>
-                    <li className="campoEndereco6">
-                        <p>São Paulo</p>
-                    </li>
-                </ul>
-            </section>
-        </main>
-    )
+  useEffect(() => {
+    if (!paciente) {
+      navigate('/cadastrar', { replace: true })
+    }
+  }, [])
+
+  return (
+    <main>
+      <Titulo titulo='Perfil' />
+      <section className='flex max-md:flex-col w-full h-[50vh] justify-center items-center gap-[2vw] max-md:gap-[2vh]'>
+        <div className='w-[44%] min-w-[240px]'>
+          <h2 className='titulo-2'>Suas informações de perfil</h2>
+          <Linha />
+          <p>Confira se seus dados de cadastro estão de acordo.</p>
+        </div>
+        <div className='p-8 bg-cc-cinza rounded-2xl w-[44%] min-w-[240px]'>
+          <ul className='flex flex-col gap-[2vh]'>
+            <li className='flex gap-2 items-center p-2 rounded-lg bg-white shadow-md'>
+							<FaMailBulk className='text-lg'/>
+              <span className='text-lg font-bold'>Nome:</span>{' '}
+              {paciente && paciente.nome}
+            </li>
+            <li className='flex gap-2 items-center p-2 rounded-lg bg-white shadow-md'>
+							<FaMailBulk className='text-lg'/>
+              <span className='text-lg font-bold'>Email:</span>{' '}
+              {paciente && paciente.email}
+            </li>
+            <li className='flex gap-2 items-center p-2 rounded-lg bg-white shadow-md'>
+							<FaMailBulk className='text-lg'/>
+              <span className='text-lg font-bold'>Telefone:</span>{' '}
+              {(paciente && paciente.telefone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3'))}
+            </li>
+          </ul>
+          <button className='botao mx-auto' onClick={handleLogout}>Sair</button>
+        </div>
+      </section>
+    </main>
+  )
 }
 
 export default Perfil

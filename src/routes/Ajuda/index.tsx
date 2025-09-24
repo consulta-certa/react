@@ -47,7 +47,7 @@ function Ajuda () {
             Fale com o HC
           </Link>
         </section>
-        <section className='w-[50%] min-w-[280px] h-[60vh] pr-[1vw] overflow-scroll'>
+        <section className='w-[50%] min-w-[280px] h-[60vh] pr-[1vw] overflow-y-scroll'>
           <ul className='flex flex-col gap-4'>
             {faqs.map((faq, index) => (
               <ItemFaq
@@ -63,41 +63,6 @@ function Ajuda () {
         </section>
       </div>
     </main>
-
-		/*
-		
-		<main>
-      <Titulo titulo="Ajuda" />
-      <div className="flex max-md:flex-col gap-[5vw] max-md:gap-[2vh] justify-center items-center w-full mx-[2vw] my-auto">
-        <section className="w-[40%] min-w-[280px]">
-          <h2 className="titulo-2">Continua com dúvidas?</h2>
-          <Linha />
-          <p>
-            Clique abaixo para falar com o HC diretamente e resolver sua
-            questão.
-          </p>
-          <Link to="/contato" className="botao block max-w-fit">
-            Fale com o HC
-          </Link>
-        </section>
-        <section className="w-[50%] min-w-[280px] h-[60vh] overflow-scroll">
-          <ul className="flex flex-col gap-4">
-            {faqs.map((faq, index) => (
-              <FAQItem
-                key={faq.id}
-                index={index}
-                titulo={faq.titulo}
-                resposta={faq.resposta}
-                aberto={aberto}
-                onToggle={toggleItem}
-              />
-            ))}
-          </ul>
-        </section>
-      </div>
-    </main>
-		
-		*/
   )
 }
 

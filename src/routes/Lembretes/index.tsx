@@ -6,16 +6,31 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
 import { formatarData } from '../../utils/formatarData'
+import type { tipoConsulta } from '../../types/tipoConsulta'
 
 function Lembretes () {
   const navigate = useNavigate()
   const { paciente } = useAuth()
+  const [listaLembretes, setListaLembretes] = useState<tipoConsulta[]>([])
 
-  useEffect(() => {
-    if (!paciente) {
-      navigate('/cadastrar', { replace: true })
+useEffect(() => {
+  if (!paciente) {
+    navigate('/cadastrar', { replace: true })
+    return
+  }
+
+  const buscarConsultas = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/consultas?id_paciente=${paciente.id_paciente}`)
+      const dados = await response.json()
+      setListaLembretes(dados)
+    } catch {
+      setErro('Erro ao carregar seus lembretes.')
     }
-  }, [paciente, navigate])
+  }
+
+  buscarConsultas()
+}, [paciente])
 
   const [dataSelecionada, setDataSelecionada] = useState('')
   const [especialidade, setEspecialidade] = useState('')
@@ -66,7 +81,8 @@ function Lembretes () {
         email: paciente!.email,
         telefone: paciente!.telefone,
         especialidade: consultaCriada.especialidade,
-        data_consulta: consultaCriada.data_consulta
+        data_consulta: consultaCriada.data_consulta,
+        id_paciente: paciente!.id_paciente
       }
 
       console.log(jsonPayload)
@@ -91,9 +107,13 @@ function Lembretes () {
       <div className='flex max-md:flex-col max-md:gap-[4vh] gap-[2vw] justify-center items-center w-full'>
         <section className='w-[50%] max-md:w-full'>
           <h2 className='titulo-2'>Seus lembretes</h2>
-          <ul className='flex flex-col gap-[2vh] w-full mt-[4vh] h-[40vh] pr-[2vw] overflow-scroll'>
-            <ItemLembrete especialidade='Cardiologista' horario='01/01/2025 23:59' canal='email' />
-            <ItemLembrete especialidade='Neurologista' horario='02/01/2025 10:00' canal='sms' />
+          <ul className='flex flex-col gap-[2vh] w-full mt-[4vh] h-[40vh] pr-[2vw] overflow-y-scroll'>
+            {
+              listaLembretes.length == 0 ? <li>Você ainda não registrou nenhum lembrete.</li> :
+              listaLembretes.map((lembrete)=>(
+                <ItemLembrete key={lembrete.id_consulta} especialidade={lembrete.especialidade} horario={lembrete.data_consulta.replace(':', 'h').replace(' ', ' às ')} canal='email' />
+              ))
+            }
           </ul>
         </section>
         <section className='w-[32%] max-md:w-full'>

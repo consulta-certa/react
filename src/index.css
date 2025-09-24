@@ -64,7 +64,7 @@
   }
 
   .botao {
-    @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh];
+    @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 w-fit min-w-[150px] mt-[2vh] hover:bg-cc-azul-escuro;
   }
 
   .form {
@@ -100,7 +100,7 @@
     }
 
     & button {
-      @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh];
+      @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh] hover:bg-cc-azul-escuro;
     }
   }
 
@@ -116,6 +116,7 @@
 @theme {
   /* cores */
   --color-cc-azul: #1e77d0;
+  --color-cc-azul-escuro: #0251a1;
   --color-cc-preto: #2d2d2d;
   --color-cc-cinza: #d0e9f7;
   --color-cc-cinza-escuro: #98b5c4;

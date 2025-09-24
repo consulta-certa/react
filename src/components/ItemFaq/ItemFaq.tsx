@@ -17,7 +17,7 @@ function ItemFaq(props:{ duvida:string, resposta:string, index:number, aberto:nu
         />
       </div>
       <p
-        className={`transition-[max-height] duration-300 ease-in-out overflow-scroll pr-[1vw] ${aberto ? 'visible max-h-[40vh] mt-2' : 'invisible max-h-0'}`}
+        className={`transition-[max-height] duration-300 ease-in-out overflow-y-scroll pr-[1vw] ${aberto ? 'visible max-h-[40vh] mt-2' : 'invisible max-h-0'}`}
       >
         {props.resposta}
       </p>

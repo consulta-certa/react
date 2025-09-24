@@ -12,10 +12,8 @@ import { MdRateReview } from 'react-icons/md'
 import { TbBellRingingFilled } from 'react-icons/tb'
 import { IoPersonCircle } from 'react-icons/io5'
 import { FaBars } from 'react-icons/fa'
-import { useAuth } from '../../context/AuthContext'
 
 function Header () {
-  const { paciente } = useAuth()
 
   return (
     <header className='header'>
@@ -40,8 +38,8 @@ function Header () {
           <NavElement path='/contato' icon={IoMdChatboxes} label='Contato' />
           <NavElement path='/avaliar-teleconsulta' icon={MdRateReview} label='Avaliações'
           />
-          <NavElement path={paciente ? '/lembretes' : '/cadastrar'} icon={TbBellRingingFilled} label='Lembretes' />
-          <NavElement path={paciente ? '/perfil' : '/cadastrar'} icon={IoPersonCircle} label='Perfil' />
+          <NavElement path='/lembretes' icon={TbBellRingingFilled} label='Lembretes' />
+          <NavElement path='/perfil' icon={IoPersonCircle} label='Perfil' />
         </ul>
       </nav>
       <nav className='hidden max-lg:block fixed left-0 bottom-0 w-full px-[2vw] z-1000 h-[12vh] text-lg'>

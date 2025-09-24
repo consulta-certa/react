@@ -49,7 +49,7 @@ function Guia () {
             ''
           )}
         </section>
-        <section className='[&_p]:my-4 [&_p]:text-justify w-[50%] max-lg:w-[100%] h-[50vh] overflow-scroll pr-[2vw]'>
+        <section className='[&_p]:my-4 [&_p]:text-justify w-[50%] max-lg:w-[100%] h-[50vh] overflow-y-scroll pr-[2vw]'>
           <h3 className='text-xl font-bold'>Descrição</h3>
           {descricao.map((p, index) => (
             <p key={index}>{p}</p>

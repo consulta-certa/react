@@ -9,7 +9,7 @@ function Entrada () {
 
   useEffect(() => {
     if (paciente) {
-      navigate(-1)
+      navigate('/', { replace: true })
     }
   }, [paciente, navigate])
 
