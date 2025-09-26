@@ -12,11 +12,11 @@ app = Flask(__name__)
 CORS(app)
 
 # Config Oracle
-USER = "rm562999"
-PASSWORD = "081105"
-HOST = "oracle.fiap.com.br"
-PORT = 1521
-SERVICE_NAME = "orcl"
+USER = "Usuario"
+PASSWORD = "Senha"
+HOST = "Host Name"
+PORT = "Porta"
+SERVICE_NAME = "Service Name"
 
 def get_connection():
     try:
