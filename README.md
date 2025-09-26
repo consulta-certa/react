@@ -1,6 +1,6 @@
 # 📖 Consulta Certa
-
 Plataforma desenvolvida para auxilixar pacientes do HC a acessar o Portal do Paciente e realizar suas teleconsultas, fornecendo guias e informações. O projeto tem como missão reduzir a taxa de absenteísmo nas teleconsultas.
+
 ---
 
 ## 🚀 Tecnologias Usadas
