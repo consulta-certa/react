@@ -1,5 +1,5 @@
 # 📖 Consulta Certa
-Plataforma desenvolvida para auxilixar pacientes do HC a acessar o Portal do Paciente e realizar suas teleconsultas, fornecendo guias e informações. O projeto tem como missão reduzir a taxa de absenteísmo nas teleconsultas.
+Plataforma desenvolvida para auxilixar pacientes do HC a acessar o Portal do Paciente e realizar suas teleconsultas, fornecendo guias, informações e lembretes automáticos. O projeto tem como missão reduzir a taxa de absenteísmo nas teleconsultas.
 
 ---
 
@@ -92,27 +92,39 @@ O projeto utiliza ícones e imagens organizados na pasta `public/media/` e em `s
 
 ## 📂 Estrutura de diretórios
 ```
-react-main/
+react/
 ├── backend/           # Backend em Flask (API)
 │   ├── app.py
 │   ├── requirements.txt
 │   └── venv/          # Ambiente virtual
-├── public/            # Imagens e assets
+├── public/            
+│   ├── fonts/         # Arquivos de fonte
+│   └── media/         # Imagens e videos
 ├── src/               # Código-fonte React
-│   ├── assets/        # Ícones e imagens
+│   ├── assets/        # Imagens e assets
 │   ├── components/    # Componentes reutilizáveis
-│   ├── pages/         # Páginas principais
+│   ├── context/       # Contexto de autentificação de entrada
+│   ├── routes/        # Páginas principais
 │   ├── App.tsx
-│   └── main.tsx
-├── db.json            # Base de dados mock
-├── package.json       # Dependências do frontend
-├── vite.config.ts     # Configuração do Vite
-└── README.md
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── db.json            # Base de dados
+├── estlint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
 ---
 
 ## 🔗 Links do Projeto
-🌐 Aplicação Online: [Consulta Certa](https://consulta-certa-dusky.vercel.app)
+🌐 Aplicação Online: <a href='https://consulta-certa-dusky.vercel.app' target='_'>Consulta Certa</a>
 
-▶️ Vídeo no YouTube: [Apresentação do site](https://youtube.com/)
+▶️ Vídeo no YouTube: <a href='https://youtube.com/' target='_'>Apresentação do site</a>
