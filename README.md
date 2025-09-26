@@ -33,10 +33,60 @@ Plataforma desenvolvida para auxilixar pacientes do HC a acessar o Portal do Pac
 
 ---
 
+## 💻 Execução
+
+Para rodar o projeto, execute os comandos abaixo
+
+```
+npm install
+npm run api
+```
+
+Após isso, acesse a pasta backend
+
+```
+cd backend
+```
+
+E execute
+
+```
+.\venv\Scripts\activate
+python.exe -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Se estiver no bash:
+
+```
+$env:SENDGRID_API_KEY="chave da api"
+```
+
+Se estiver no command prompt
+
+```
+set SENDGRID_API_KEY="chave da api"
+```
+
+Depois execute o arquivo app.py
+
+```
+python app.py
+```
+
+Por fim
+
+```
+npm run dev
+```
+
+---
+
 ## 🖼️ Imagens e Ícones
 
-- O projeto utiliza ícones e imagens organizados na pasta `public/` e em `src/assets/`.  
-![Tela inicial do Consulta Certa](./public/screenshot-home.png)
+O projeto utiliza ícones e imagens organizados na pasta `public/media/` e em `src/assets/`.
+
+![Tela inicial do Consulta Certa](./public/media/demo-plataforma.gif)
 
 ---
 
