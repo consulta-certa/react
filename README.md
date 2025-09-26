@@ -1,69 +1,68 @@
-# React + TypeScript + Vite
+# 📖 Consulta Certa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plataforma desenvolvida para auxilixar pacientes do HC a acessar o Portal do Paciente e realizar suas teleconsultas, fornecendo guias e informações. O projeto tem como missão reduzir a taxa de absenteísmo nas teleconsultas.
+---
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias Usadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- **React** (Vite + TypeScript)  
+- **Tailwind CSS** para estilização responsiva  
+- **ESLint** para padronização de código  
 
-## Expanding the ESLint configuration
+### Backend
+- **Python (Flask)** para a API  
+- **APScheduler** para agendamento de tarefas  
+- **JSON (db.json)** como base de dados simulada  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Outros
+- **PostCSS**  
+- **Vercel** (deploy do frontend)  
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 👥 Integrantes
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Nome | RM |
+|------|---------|
+| Felipe Ferrete Lemes | RM562999 |
+| Gustavo Bosak Santos | RM566315 |
+| Nikolas Henrique de Souza Lemes Brisola | RM564371 |
+
+> 1TDSPF - ADS
+
+---
+
+## 🖼️ Imagens e Ícones
+
+- O projeto utiliza ícones e imagens organizados na pasta `public/` e em `src/assets/`.  
+![Tela inicial do Consulta Certa](./public/screenshot-home.png)
+
+---
+
+## 📂 Estrutura de diretórios
+```
+react-main/
+├── backend/           # Backend em Flask (API)
+│   ├── app.py
+│   ├── requirements.txt
+│   └── venv/          # Ambiente virtual
+├── public/            # Imagens e assets
+├── src/               # Código-fonte React
+│   ├── assets/        # Ícones e imagens
+│   ├── components/    # Componentes reutilizáveis
+│   ├── pages/         # Páginas principais
+│   ├── App.tsx
+│   └── main.tsx
+├── db.json            # Base de dados mock
+├── package.json       # Dependências do frontend
+├── vite.config.ts     # Configuração do Vite
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔗 Links do Projeto
+🌐 Aplicação Online: [Consulta Certa](https://consulta-certa-dusky.vercel.app)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+▶️ Vídeo no YouTube: [Apresentação do site](https://youtube.com/)
