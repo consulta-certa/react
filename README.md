@@ -1,5 +1,5 @@
 # 📖 Consulta Certa
-Plataforma desenvolvida para auxilixar pacientes do HC a acessar o Portal do Paciente e realizar suas teleconsultas, fornecendo guias e informações. O projeto tem como missão reduzir a taxa de absenteísmo nas teleconsultas.
+Plataforma desenvolvida para auxilixar pacientes do HC a acessar o Portal do Paciente e realizar suas teleconsultas, fornecendo guias, informações e lembretes automáticos. O projeto tem como missão reduzir a taxa de absenteísmo nas teleconsultas.
 
 ---
 
@@ -92,7 +92,7 @@ O projeto utiliza ícones e imagens organizados na pasta `public/media/` e em `s
 
 ## 📂 Estrutura de diretórios
 ```
-react-main/
+react/
 ├── backend/           # Backend em Flask (API)
 │   ├── app.py
 │   ├── requirements.txt
