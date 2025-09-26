@@ -44,7 +44,7 @@ def set_reminder():
     data = request.get_json()
     email = data.get("email")
     telefone = data.get("telefone")
-    nome = data.get("nome", "Paciente")  # Novo: Usa nome do JSON, fallback "Paciente"
+    nome = data.get("nome", "Paciente")
     data_consulta_str = data.get("data_consulta")  
     especialidade = data.get("especialidade", "geral")
 
@@ -68,7 +68,6 @@ def set_reminder():
         paciente = cursor.fetchone()
         if paciente:
             id_paciente = paciente[0]
-            #UPDATE; nome se já existir
             cursor.execute("UPDATE pacientes SET nome = :nome WHERE id_paciente = :id_paciente", {"nome": nome, "id_paciente": id_paciente})
         else:
             id_paciente = get_next_id(conn, "pacientes", "id_paciente")
@@ -77,7 +76,7 @@ def set_reminder():
                 VALUES (:id_paciente, :nome, :email, :telefone)
             """, {
                 "id_paciente": id_paciente,
-                "nome": nome,  # Usa nome do JSON
+                "nome": nome,
                 "email": email,
                 "telefone": telefone or ""
             })
@@ -134,9 +133,9 @@ def set_reminder():
             conn.close()
         return jsonify({"error": "Erro ao salvar dados"}), 500
     
-# FUNCAO API SENDGRID - emailENVIANDO
+# FUNCAO API SENDGRID - Enviar Email
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
-def enviar_email(destinatario, data_consulta):
+def enviar_email(destinatario, data_consulta, nome):
     if not SENDGRID_API_KEY:
         print("Erro: SendGrid API Key não configurada.")
         return False
@@ -144,7 +143,7 @@ def enviar_email(destinatario, data_consulta):
         from_email='contato@consultacerta.tech',  
         to_emails=destinatario,
         subject='Lembrete de Consulta',
-        html_content=f'<p>Olá! Este é um lembrete da sua consulta agendada para {data_consulta.strftime("%d/%m/%Y %H:%M")}.</p>'
+        html_content=f'<p>Olá! {nome} Este é um lembrete da sua consulta agendada para {data_consulta.strftime("%d/%m/%Y %H:%M")}.</p>'
     )
     
     try:
