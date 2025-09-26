@@ -97,17 +97,29 @@ react-main/
 │   ├── app.py
 │   ├── requirements.txt
 │   └── venv/          # Ambiente virtual
-├── public/            # Imagens e assets
+├── public/            
+│   ├── fonts/         # Arquivos de fonte
+│   └── media/         # Imagens e videos
 ├── src/               # Código-fonte React
-│   ├── assets/        # Ícones e imagens
+│   ├── assets/        # Imagens e assets
 │   ├── components/    # Componentes reutilizáveis
-│   ├── pages/         # Páginas principais
+│   ├── context/       # Contexto de autentificação de entrada
+│   ├── routes/        # Páginas principais
 │   ├── App.tsx
-│   └── main.tsx
-├── db.json            # Base de dados mock
-├── package.json       # Dependências do frontend
-├── vite.config.ts     # Configuração do Vite
-└── README.md
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── db.json            # Base de dados
+├── estlint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
 ---
