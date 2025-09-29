@@ -24,8 +24,8 @@ function ListaGuias () {
         (conteudo: tipoConteudo) => conteudo.tipo === 'gt'
       )
       setGuiasTeleconsulta(guiasTeleconsultaSelecionados)
-    } catch (erro) {
-      console.error('Erro ao buscar os dados dos guias:', erro)
+    } catch {
+      console.error('Erro ao buscar os dados dos guias')
     }
   }
 

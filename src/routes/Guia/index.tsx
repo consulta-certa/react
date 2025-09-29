@@ -18,14 +18,14 @@ function Guia () {
         (conteudo: tipoConteudo) => converterPath(conteudo.titulo) === name
 			)
       setGuia(guiaSelecionado)
-    } catch (erro) {
-      console.error('Erro ao buscar os dados do guia:', erro)
+    } catch {
+      console.error('Erro ao buscar os dados do guia')
     }
   }
 
   useEffect(() => {
     fetchGuia()
-  }, [])
+  })
 
   if (!guia) {
     return <Erro/>

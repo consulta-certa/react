@@ -30,7 +30,7 @@ useEffect(() => {
   }
 
   buscarConsultas()
-}, [paciente])
+}, [navigate, paciente])
 
   const [dataSelecionada, setDataSelecionada] = useState('')
   const [especialidade, setEspecialidade] = useState('')
@@ -96,7 +96,7 @@ useEffect(() => {
       if (!lembreteRes.ok) throw new Error('Erro ao enviar lembrete.')
 
       setEnviado(true)
-    } catch (err) {
+    } catch {
       setErro('Erro ao processar o lembrete. Tente novamente.')
     }
   }

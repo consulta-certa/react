@@ -19,8 +19,8 @@ function Ajuda () {
       )
       setFaqs(faqsSelecionadas)
 
-    } catch (error) {
-      console.error('Erro ao buscar os dados de FAQ:', error)
+    } catch {
+      console.error('Erro ao buscar os dados de FAQ')
     }
   }
 
