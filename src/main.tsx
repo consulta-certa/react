@@ -17,7 +17,7 @@ import QuemSomos from './routes/QuemSomos'
 import Termos from './routes/Termos'
 import Cadastro from './routes/Cadastro'
 import Entrada from './routes/Entrada'
-import { AuthProvider } from './context/AuthContext'
+import { AuthProvider } from './context/AuthProvider'
 
 const router = createBrowserRouter([
   {

@@ -198,7 +198,7 @@ function Contato() {
         operacao={() => setEnviado(false)}
         mensagem='Dúvida enviada ao HC!'
         descricao='Acompanhe seu email para continuar a conversa por lá.'
-        enviado={enviado}
+        confirmacao={enviado}
       />
     </main>
   )

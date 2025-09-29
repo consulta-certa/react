@@ -1,6 +1,6 @@
 import { BiSolidDownArrow } from 'react-icons/bi'
 
-function ItemFaq(props:{ duvida:string, resposta:string, index:number, aberto:number | null, onToggle:Function }) {
+function ItemFaq(props:{ duvida:string, resposta:string, index:number, aberto:number | null, onToggle:(e:number) => void}) {
   const aberto = props.aberto === props.index;
 
   return (

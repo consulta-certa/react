@@ -1,4 +1,3 @@
-// VLibrasWidget.tsx
 import { useEffect } from 'react'
 
 function VLibras () {

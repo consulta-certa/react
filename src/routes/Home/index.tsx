@@ -17,10 +17,14 @@ import logoBID from '../../assets/images/logo_parceiro.png'
 import logoBP from '../../assets/images/logo_parceiro1.png'
 import logoUmane from '../../assets/images/logo_parceiro2.png'
 import logoSSSP from '../../assets/images/logo_parceiro3.png'
+import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
+import { useAuth } from '../../context/useAuth'
 
 function Home () {
   const [index, setIndex] = useState(0)
   const [hover, setHover] = useState(false)
+  const { paciente } = useAuth()
+  const [confirmado, setConfirmado] = useState(true)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -221,6 +225,11 @@ function Home () {
           </ul>
         </div>
       </section>
+
+      {
+        paciente?.acompanhante ?
+        <ModalConfirmar operacao={() => setConfirmado(false)} mensagem='Cadastre seu acompanhante!' descricao='Não se esqueça de acessar o perfil e registrar as informações do acompanhante.' confirmacao={confirmado}/> : ''
+      }
     </main>
   )
 }

@@ -3,7 +3,7 @@ import Titulo from '../../components/Titulo/Titulo'
 import ItemLembrete from '../../components/ItemLembrete/ItemLembrete'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { useAuth } from '../../context/useAuth'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
 import { formatarData } from '../../utils/formatarData'
 import type { tipoConsulta } from '../../types/tipoConsulta'
@@ -158,7 +158,7 @@ function Lembretes() {
         </section>
       </div>
 
-      <ModalConfirmar operacao={() => navigate('/')} mensagem='Lembrete Registrado! Ele será enviado por email' descricao='Clique em OK para voltar à página inicial.' enviado={enviado} />
+      <ModalConfirmar operacao={() => navigate('/')} mensagem='Lembrete Registrado! Ele será enviado por email' descricao='Clique em OK para voltar à página inicial.' confirmacao={enviado} />
     </main>
   )
 }

@@ -1,13 +1,6 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { AuthContext } from './authContext'
 import type { tipoPaciente } from '../types/tipoPaciente'
-
-type AuthContextType = {
-  paciente: tipoPaciente | null
-  login: (p: tipoPaciente) => void
-  logout: () => void
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [paciente, setPaciente] = useState<tipoPaciente | null>(null)
@@ -38,10 +31,4 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </AuthContext.Provider>
   )
-}
-
-export const useAuth = () => {
-  const context = useContext(AuthContext)
-  if (!context) throw new Error('useAuth precisa estar dentro de AuthProvider')
-  return context
 }
