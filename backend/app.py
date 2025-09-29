@@ -7,7 +7,10 @@ import oracledb
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from dotenv import load_dotenv
 
+# Carregar variáveis do arquivo .env
+load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
@@ -64,7 +67,7 @@ def set_reminder():
     try:
         cursor = conn.cursor()
 
-        # 1. Verificar se paciente existe pelo email, senão inserir (agora com nome real)
+        # 1. Verificar se paciente existe pelo email, senão inserir
         cursor.execute("SELECT id_paciente FROM pacientes WHERE email = :email", {"email": email})
         paciente = cursor.fetchone()
         if paciente:
@@ -111,7 +114,7 @@ def set_reminder():
             })
             lembretes.append({
                 "id_lembrete": id_lembrete,
-                "canal_envio": "email",  # Futuro: Use data.get("canal")
+                "canal_envio": "email",
                 "data_envio": data_envio.strftime("%d/%m/%Y %H:%M"),
                 "id_consulta": id_consulta
             })
@@ -133,17 +136,18 @@ def set_reminder():
             conn.rollback()
             conn.close()
         return jsonify({"error": "Erro ao salvar dados"}), 500
-    
+
 # FUNCAO API SENDGRID - Enviar Email
 def enviar_email(destinatario, data_consulta, nome):
     if not SENDGRID_API_KEY:
         print("Erro: SendGrid API Key não configurada.")
         return False
+    
     message = Mail(
         from_email='contato@consultacerta.tech',  
         to_emails=destinatario,
         subject='Lembrete de Consulta',
-        html_content=f'<p>Olá! {nome} Este é um lembrete da sua consulta agendada para {data_consulta.strftime("%d/%m/%Y %H:%M")}.</p>'
+        html_content=f'<p>Olá, {nome}! Este é um lembrete da sua consulta agendada para {data_consulta.strftime("%d/%m/%Y %H:%M")}.</p>'
     )
     
     try:
@@ -153,12 +157,11 @@ def enviar_email(destinatario, data_consulta, nome):
         return response.status_code == 202
     except Exception as e:
         print(f"Erro ao enviar e-mail: {e}")
-        return False    
-    
-    
+        return False
+
 @app.route("/api/test-email")
 def test_email():
-    sucesso = enviar_email("mariafelipeinfo@gmail.com", datetime.now())
+    sucesso = enviar_email("mariafelipeinfo@gmail.com", datetime.now(), "Teste")
     if sucesso:
         return "Email enviado com sucesso!"
     else:
@@ -175,32 +178,26 @@ def enviar_lembretes_pendentes():
         cursor = conn.cursor()
         agora = datetime.now()
 
-        # Buscar lembretes com data_envio <= agora e que ainda não foram enviados
+        # Buscar lembretes com data_envio <= agora e que ainda não foram enviados e o nome do paciente
         cursor.execute("""
-            SELECT id_lembrete, email, data_envio, id_consulta
-            FROM lembretes
-            WHERE data_envio <= :agora
-              AND (enviado IS NULL OR enviado = 'N')
+            SELECT l.id_lembrete, l.email, l.data_envio, l.id_consulta, 
+                   c.data_consulta, p.nome
+            FROM lembretes l
+            JOIN consultas c ON l.id_consulta = c.id_consulta
+            JOIN pacientes p ON c.id_paciente = p.id_paciente
+            WHERE l.data_envio <= :agora
+              AND (l.enviado IS NULL OR l.enviado = 'N')
         """, {"agora": agora})
 
         lembretes = cursor.fetchall()
 
         for lembrete in lembretes:
-            id_lembrete, email, data_envio, id_consulta = lembrete
+            id_lembrete, email, data_envio, id_consulta, data_consulta, nome = lembrete
 
-            # Buscar data da consulta para o e-mail
-            cursor.execute("SELECT data_consulta FROM consultas WHERE id_consulta = :id_consulta", {"id_consulta": id_consulta})
-            data_consulta = cursor.fetchone()
-            if data_consulta:
-                data_consulta = data_consulta[0]
-            else:
-                print(f"Consulta {id_consulta} não encontrada.")
-                continue
-
-            sucesso = enviar_email(email, data_consulta)
+            sucesso = enviar_email(email, data_consulta, nome)
             if sucesso:
                 print(f"Lembrete {id_lembrete} enviado para {email}")
-                # Marcar lembrete como enviado
+                # Marcar lembrete como enviado no Banco
                 cursor.execute("UPDATE lembretes SET enviado = 'S' WHERE id_lembrete = :id_lembrete", {"id_lembrete": id_lembrete})
                 conn.commit()
             else:
@@ -211,17 +208,22 @@ def enviar_lembretes_pendentes():
 
     except Exception as e:
         print(f"Erro ao enviar lembretes: {e}")
+        import traceback
+        traceback.print_exc()
         if conn:
             conn.rollback()
             conn.close()
 
+# Scheduler para verificar lembretes pendentes a cada minuto
 scheduler = BackgroundScheduler()
 scheduler.add_job(func=enviar_lembretes_pendentes, trigger="interval", minutes=1)
 scheduler.start()
+
 # Para garantir que o scheduler pare junto com o Flask
 atexit.register(lambda: scheduler.shutdown())
 
-print("SendGrid API Key:", SENDGRID_API_KEY)
+print(f"SendGrid API Key configurada: {SENDGRID_API_KEY}")
+print(f"User DB: {USER}")
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

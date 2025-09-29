@@ -129,6 +129,18 @@
       "especialidade": "ortopedista",
       "data_consulta": "10/10/2025 12:25",
       "status": true
+    },
+    {
+      "id": "e262",
+      "especialidade": "fisioterapeuta",
+      "data_consulta": "30/09/2025 10:06",
+      "status": true
+    },
+    {
+      "id": "ac6d",
+      "especialidade": "fisioterapeuta",
+      "data_consulta": "30/09/2025 10:18",
+      "status": true
     }
   ],
   "contatos": [
