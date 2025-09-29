@@ -10,30 +10,30 @@ import type { tipoConsulta } from '../../types/tipoConsulta'
 const URL_CONSULTAS = import.meta.env.VITE_API_BASE_CONSULTAS;
 const URL_API_LEMBRETES = import.meta.env.VITE_API_ENVIAR_LEMBRETES;
 
-function Lembretes () {
+function Lembretes() {
   const navigate = useNavigate()
   const { paciente } = useAuth()
   const [listaLembretes, setListaLembretes] = useState<tipoConsulta[]>([])
 
-useEffect(() => {
-  if (!paciente) {
-    navigate('/cadastrar', { replace: true })
-    return
-  }
-
-  const buscarConsultas = async () => {
-    try {
-      const response = await fetch(`http://localhost:3001/consultas?id=${paciente.id}`)
-      const dados = await response.json()
-      console.log(dados)
-      setListaLembretes(dados)
-    } catch {
-      setErro('Erro ao carregar seus lembretes.')
+  useEffect(() => {
+    if (!paciente) {
+      navigate('/cadastrar', { replace: true })
+      return
     }
-  }
 
-  buscarConsultas()
-}, [navigate, paciente])
+    const buscarConsultas = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/consultas?id=${paciente.id}`)
+        const dados = await response.json()
+        console.log(dados)
+        setListaLembretes(dados)
+      } catch {
+        setErro('Erro ao carregar seus lembretes.')
+      }
+    }
+
+    buscarConsultas()
+  }, [navigate, paciente])
 
   const [dataSelecionada, setDataSelecionada] = useState('')
   const [especialidade, setEspecialidade] = useState('')
@@ -72,7 +72,7 @@ useEffect(() => {
       if (!consultaRes.ok) throw new Error('Erro ao registrar consulta.')
 
       const consultaCriada = await consultaRes.json()
-      
+
       const jsonPayload = {
         nome: paciente?.nome,
         email: paciente?.email,
@@ -107,9 +107,9 @@ useEffect(() => {
           <ul className='flex flex-col gap-[2vh] w-full mt-[4vh] h-[40vh] pr-[2vw] overflow-y-scroll'>
             {
               listaLembretes.length == 0 ? <li>Você ainda não registrou nenhum lembrete.</li> :
-              listaLembretes.map((lembrete)=>(
-                <ItemLembrete key={lembrete.id} especialidade={lembrete.especialidade} horario={lembrete.data_consulta.replace(':', 'h').replace(' ', ' às ')} canal='email' />
-              ))
+                listaLembretes.map((lembrete) => (
+                  <ItemLembrete key={lembrete.id} especialidade={lembrete.especialidade} horario={lembrete.data_consulta.replace(':', 'h').replace(' ', ' às ')} canal='email' />
+                ))
             }
           </ul>
         </section>
@@ -158,7 +158,7 @@ useEffect(() => {
         </section>
       </div>
 
-      <ModalConfirmar operacao={()=>navigate('/')} mensagem='Lembrete Registrado! Ele será enviado por email' enviado={enviado}/>
+      <ModalConfirmar operacao={() => navigate('/')} mensagem='Lembrete Registrado! Ele será enviado por email' descricao='Clique em OK para voltar à página inicial.' enviado={enviado} />
     </main>
   )
 }

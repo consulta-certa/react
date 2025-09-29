@@ -6,13 +6,13 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import type { tipoContato } from '../../types/tipoContato'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
-import { useNavigate } from 'react-router-dom'
 const URL_CONTATOS = import.meta.env.VITE_API_BASE_CONTATOS;
 
-function Contato () {
-  const navigate = useNavigate()
+function Contato() {
   const [email, setEmail] = useState('')
   const [nome, setNome] = useState('')
+  const [assunto, setAssunto] = useState('')
+  const [conteudo, setConteudo] = useState('')
   const [enviado, setEnviado] = useState(false)
   const [erro, setErro] = useState('')
 
@@ -36,6 +36,10 @@ function Contato () {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErro('')
+    setNome('')
+    setEmail('')
+    setAssunto('')
+    setConteudo('')
 
     if (!nome.trim() || nome.length < 2) {
       setErro('Nome inválido.')
@@ -46,6 +50,17 @@ function Contato () {
       setErro('Email inválido.')
       return
     }
+
+    // Simulação apenas, para não enviar emails dispersos para o HC
+      const mensagem = {
+        nome: nome,
+        email: email,
+        assunto: assunto,
+        conteudo: conteudo
+      }
+
+      console.log(mensagem)
+    //
 
     setEnviado(true)
   }
@@ -66,6 +81,7 @@ function Contato () {
                   type='text'
                   id='idNome'
                   name='nome'
+                  value={nome}
                   onChange={e => setNome(e.target.value)}
                 />
               </div>
@@ -77,6 +93,7 @@ function Contato () {
                   type='email'
                   id='idEmail'
                   name='email'
+                  value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
               </div>
@@ -84,14 +101,26 @@ function Contato () {
                 <label htmlFor='idAssunto'>
                   Assunto <span className='text-red-500 font-bold'>*</span>
                 </label>
-                <input type='text' id='idAssunto' name='assunto' />
+                <input
+                  type='text'
+                  id='idAssunto'
+                  name='assunto'
+                  value={assunto}
+                  onChange={e => setAssunto(e.target.value)}
+                />
               </div>
               <div className='input-container'>
                 <label htmlFor='idConteudo'>
                   Do que precisa?{' '}
                   <span className='text-red-500 font-bold'>*</span>
                 </label>
-                <textarea id='idConteudo' name='conteudo' rows={2}></textarea>
+                <textarea
+                  id='idConteudo'
+                  name='conteudo'
+                  value={conteudo}
+                  rows={2}
+                  onChange={e => setConteudo(e.target.value)}
+                ></textarea>
               </div>
             </fieldset>
             <button type='submit'>Enviar</button>
@@ -166,8 +195,9 @@ function Contato () {
       </div>
 
       <ModalConfirmar
-        operacao={() => navigate('/')}
-        mensagem='Dúvida enviada ao HC! Acompanhe seu email'
+        operacao={() => setEnviado(false)}
+        mensagem='Dúvida enviada ao HC!'
+        descricao='Acompanhe seu email para continuar a conversa por lá.'
         enviado={enviado}
       />
     </main>

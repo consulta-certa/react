@@ -1,4 +1,4 @@
-function ModalConfirmar (props:{operacao:Function, mensagem:string, enviado:boolean}) {
+function ModalConfirmar (props:{operacao:() => void, mensagem:string, descricao:string, enviado:boolean}) {
   return (
     <div
       className={`fixed inset-0 bg-black/30 transition-[opacity,z] duration-1000 ease-in ${
@@ -13,7 +13,7 @@ function ModalConfirmar (props:{operacao:Function, mensagem:string, enviado:bool
         <h3 className='text-xl font-bold mb-4'>
           {props.mensagem}
         </h3>
-        <p className='mb-4'>Clique em OK para voltar à página inicial.</p>
+        <p className='mb-4'>{props.descricao}</p>
         <button onClick={() => props.operacao()} className='botao'>
           OK
         </button>

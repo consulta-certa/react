@@ -145,6 +145,7 @@ function Avaliacoes () {
       <ModalConfirmar
         operacao={() => navigate('/')}
         mensagem='Obrigado pela sua avaliação!'
+        descricao='Clique em OK para voltar à página inicial.'
         enviado={enviado}
       />
     </main>

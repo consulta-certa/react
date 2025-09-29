@@ -42,33 +42,14 @@ npm install
 npm run api
 ```
 
-Após isso, acesse a pasta backend
-
-```
-cd backend
-```
-
 E execute
 
 ```
-.\venv\Scripts\activate
+.\backend\venv\Scripts\activate
 python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
-
-Se estiver no bash:
-
-```
-$env:SENDGRID_API_KEY="chave da api"
-```
-
-Se estiver no command prompt
-
-```
-set SENDGRID_API_KEY="chave da api"
-```
-
-Depois execute o arquivo app.py
+Defina as variáveis de ambiente necessárias e em seguida execute o arquivo app.py
 
 ```
 python app.py

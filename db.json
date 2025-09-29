@@ -6,12 +6,6 @@
     "eject": "react-scripts eject"
   },
   "acompanhantes": [
-    {
-      "id": "cd49",
-      "email": "e@mail.com",
-      "telefone": "11912345678",
-      "parentesco": "parentesco"
-    }
   ],
   "avaliacoes": [
     {
@@ -141,6 +135,18 @@
       "especialidade": "fisioterapeuta",
       "data_consulta": "30/09/2025 10:18",
       "status": true
+    },
+    {
+      "id": "88fa",
+      "especialidade": "cardiologista",
+      "data_consulta": "30/09/2025 10:39",
+      "status": true
+    },
+    {
+      "id": "88fa",
+      "especialidade": "cardiologista",
+      "data_consulta": "30/09/2025 10:39",
+      "status": true
     }
   ],
   "contatos": [
@@ -221,8 +227,7 @@
       "data_publicacao": "20/09/2025 20:57"
     }
   ],
-  "lembretes": [
-  ],
+  "lembretes": [],
   "pacientes": [
     {
       "id": "1963",

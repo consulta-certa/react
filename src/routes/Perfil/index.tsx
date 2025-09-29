@@ -18,7 +18,7 @@ function Perfil () {
     if (!paciente) {
       navigate('/cadastrar', { replace: true })
     }
-  }, [])
+  }, [navigate, paciente])
 
   return (
     <main>
