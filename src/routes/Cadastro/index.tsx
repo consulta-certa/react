@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Titulo from '../../components/Titulo/Titulo'
 import { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
+const URL_PACIENTES = import.meta.env.VITE_API_BASE_PACIENTES;
 
 function Cadastro () {
   const { paciente } = useAuth()
@@ -55,7 +56,7 @@ function Cadastro () {
     const perfil = { nome, telefone, email, senha, acompanhante }
 
     try {
-      const response = await fetch('http://localhost:3001/pacientes', {
+      const response = await fetch(`${URL_PACIENTES}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(perfil)

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Titulo from '../../components/Titulo/Titulo'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
 import { formatarData } from '../../utils/formatarData'
+const URL_AVALIACOES = import.meta.env.VITE_API_BASE_AVALIACOES;
 
 function Avaliacoes () {
   const [enviado, setEnviado] = useState(false)
@@ -40,7 +41,7 @@ function Avaliacoes () {
         data_valiacao: formatarData(dataSelecionada)
       }
 
-      const response = await fetch('http://localhost:3001/avaliacoes', {
+      const response = await fetch(`${URL_AVALIACOES}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(avaliacaoPayload)

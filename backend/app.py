@@ -12,11 +12,12 @@ app = Flask(__name__)
 CORS(app)
 
 # Config Oracle
-USER = "Usuario"
-PASSWORD = "Senha"
-HOST = "Host Name"
-PORT = "Porta"
-SERVICE_NAME = "Service Name"
+USER = os.getenv("ORACLE_USER")
+PASSWORD = os.getenv("ORACLE_PASSWORD")
+HOST = os.getenv("ORACLE_HOST")
+PORT = os.getenv("ORACLE_PORT")
+SERVICE_NAME = os.getenv("ORACLE_SERVICE_NAME")
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 
 def get_connection():
     try:
@@ -134,7 +135,6 @@ def set_reminder():
         return jsonify({"error": "Erro ao salvar dados"}), 500
     
 # FUNCAO API SENDGRID - Enviar Email
-SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 def enviar_email(destinatario, data_consulta, nome):
     if not SENDGRID_API_KEY:
         print("Erro: SendGrid API Key não configurada.")

@@ -4,6 +4,7 @@ import Linha from '../../components/Linha/Linha'
 import { useEffect, useState } from 'react'
 import ItemFaq from '../../components/ItemFaq/ItemFaq'
 import type { tipoConteudo } from '../../types/tipoConteudo'
+const URL_CONTEUDO = import.meta.env.VITE_API_BASE_PRODUTO;
 
 function Ajuda () {
   const [faqs, setFaqs] = useState<tipoConteudo[]>([])
@@ -11,7 +12,7 @@ function Ajuda () {
 
   const fetchFaqs = async () => {
     try {
-      const response = await fetch('http://localhost:3001/conteudos')
+      const response = await fetch(`${URL_CONTEUDO}`)
       const data = await response.json();
       
 			const faqsSelecionadas = data.filter(

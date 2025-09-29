@@ -7,6 +7,8 @@ import { useAuth } from '../../context/AuthContext'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
 import { formatarData } from '../../utils/formatarData'
 import type { tipoConsulta } from '../../types/tipoConsulta'
+const URL_CONSULTAS = import.meta.env.VITE_API_BASE_CONSULTAS;
+const URL_LEMBRETES = import.meta.env.VITE_API_BASE_LEMBRETES;
 
 function Lembretes () {
   const navigate = useNavigate()
@@ -53,7 +55,7 @@ useEffect(() => {
     limite.setDate(hoje.getDate() - 14)
 
     if (data < limite) {
-      setErro('Avaliação expirada. Selecione uma data válida.')
+      setErro('Data inválida. Só são feitos lembretes até 14 dias.')
       return
     }
 
@@ -65,7 +67,7 @@ useEffect(() => {
         id_paciente: paciente!.id_paciente
       }
 
-      const consultaRes = await fetch('http://localhost:3001/consultas', {
+      const consultaRes = await fetch(`${URL_CONSULTAS}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(consultaPayload)
@@ -87,7 +89,7 @@ useEffect(() => {
 
       console.log(jsonPayload)
 
-      const lembreteRes = await fetch('http://localhost:5000/api/set-reminder', {
+      const lembreteRes = await fetch(`${URL_LEMBRETES}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(jsonPayload)

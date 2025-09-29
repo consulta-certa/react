@@ -4,6 +4,7 @@ import imageTest from '../../assets/images/carrossel-template2.png'
 import { useEffect, useState } from 'react'
 import type { tipoConteudo } from '../../types/tipoConteudo'
 import { converterPath } from '../../utils/converterPath'
+const URL_CONTEUDOS = import.meta.env.VITE_API_BASE_CONTEUDOS;
 
 function ListaGuias () {
   const [categoria, setCategoria] = useState(0)
@@ -12,7 +13,7 @@ function ListaGuias () {
 
   const fetchGuias = async () => {
     try {
-      const response = await fetch('http://localhost:3001/conteudos')
+      const response = await fetch(`${URL_CONTEUDOS}`)
       const data = await response.json()
 
       const guiasPortalSelecionados = data.filter(

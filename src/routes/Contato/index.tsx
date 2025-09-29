@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import type { tipoContato } from '../../types/tipoContato'
 import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
 import { useNavigate } from 'react-router-dom'
+const URL_CONTATOS = import.meta.env.VITE_API_BASE_CONTATOS;
 
 function Contato () {
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ function Contato () {
   useEffect(() => {
     const buscarContatos = async () => {
       try {
-        const response = await fetch('http://localhost:3001/contatos')
+        const response = await fetch(`${URL_CONTATOS}`)
         const dados = await response.json()
         setContatos(dados)
       } catch {

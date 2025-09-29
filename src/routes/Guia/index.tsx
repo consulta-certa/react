@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { converterPath } from '../../utils/converterPath'
 import { useEffect, useState } from 'react'
 import Erro from '../Erro'
+const URL_CONTEUDOS = import.meta.env.VITE_API_BASE_CONTEUDOS;
 
 function Guia () {
   const { name } = useParams<string>()
@@ -11,7 +12,7 @@ function Guia () {
 
   const fetchGuia = async () => {
     try {
-      const response = await fetch('http://localhost:3001/conteudos')
+      const response = await fetch(`${URL_CONTEUDOS}`)
       const data = await response.json()
 
       const guiaSelecionado = data.find(
