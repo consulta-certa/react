@@ -52,7 +52,7 @@ function Ajuda () {
           <ul className='flex flex-col gap-4'>
             {faqs.map((faq, index) => (
               <ItemFaq
-                key={faq.id_conteudo}
+                key={faq.id}
                 index={index}
                 duvida={faq.titulo}
                 resposta={faq.texto}

@@ -1,5 +1,5 @@
 export type tipoConteudo = {
-    id_conteudo: number;
+    id: string;
     tipo: string;
     titulo: string;
     texto: string;

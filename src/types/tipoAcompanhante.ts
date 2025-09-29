@@ -1,7 +1,7 @@
 export type tipoAcompanhante = {
-    id_acompanhante: number;
+    id: string;
     email: string;
     telefone: string;
     parentesco: string;
-    id_paciente: number;
+    id_paciente: string;
 }

@@ -1,5 +1,5 @@
 export type tipoContato = {
-    id_contato: number;
+    id: string;
     nome: string;
     telefone: string;
     email: string;

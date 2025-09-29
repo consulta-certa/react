@@ -1,5 +1,5 @@
 export type tipoAvaliacao = {
-    id_avaliacao: number;
+    id: string;
     nota: number;
     comentario: string;
     data_valiacao: string;

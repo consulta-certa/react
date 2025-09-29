@@ -1,5 +1,5 @@
 export type tipoLembrete = {
-    id_lembrete: number;
+    id: string;
     data_envio: string;
     id_consulta: number;
 }

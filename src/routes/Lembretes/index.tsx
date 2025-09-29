@@ -8,7 +8,7 @@ import ModalConfirmar from '../../components/ModalConfirmar/ModalConfirmar'
 import { formatarData } from '../../utils/formatarData'
 import type { tipoConsulta } from '../../types/tipoConsulta'
 const URL_CONSULTAS = import.meta.env.VITE_API_BASE_CONSULTAS;
-const URL_LEMBRETES = import.meta.env.VITE_API_BASE_LEMBRETES;
+const URL_API_LEMBRETES = import.meta.env.VITE_API_ENVIAR_LEMBRETES;
 
 function Lembretes () {
   const navigate = useNavigate()
@@ -23,8 +23,9 @@ useEffect(() => {
 
   const buscarConsultas = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/consultas?id_paciente=${paciente.id_paciente}`)
+      const response = await fetch(`http://localhost:3001/consultas?id=${paciente.id}`)
       const dados = await response.json()
+      console.log(dados)
       setListaLembretes(dados)
     } catch {
       setErro('Erro ao carregar seus lembretes.')
@@ -44,11 +45,6 @@ useEffect(() => {
     setErro('')
     setEnviado(false)
 
-    if (!especialidade || !dataSelecionada) {
-      setErro('Preencha todos os campos obrigatórios.')
-      return
-    }
-
     const data = new Date(dataSelecionada)
     const hoje = new Date()
     const limite = new Date()
@@ -64,7 +60,7 @@ useEffect(() => {
         especialidade,
         data_consulta: formatarData(dataSelecionada),
         status: true,
-        id_paciente: paciente!.id_paciente
+        id: paciente?.id
       }
 
       const consultaRes = await fetch(`${URL_CONSULTAS}`, {
@@ -76,20 +72,19 @@ useEffect(() => {
       if (!consultaRes.ok) throw new Error('Erro ao registrar consulta.')
 
       const consultaCriada = await consultaRes.json()
-
       
       const jsonPayload = {
-        nome: paciente!.nome,
-        email: paciente!.email,
-        telefone: paciente!.telefone,
+        nome: paciente?.nome,
+        email: paciente?.email,
+        telefone: paciente?.telefone,
         especialidade: consultaCriada.especialidade,
         data_consulta: consultaCriada.data_consulta,
-        id_paciente: paciente!.id_paciente
+        id: paciente?.id
       }
 
       console.log(jsonPayload)
 
-      const lembreteRes = await fetch(`${URL_LEMBRETES}`, {
+      const lembreteRes = await fetch(`${URL_API_LEMBRETES}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(jsonPayload)
@@ -113,7 +108,7 @@ useEffect(() => {
             {
               listaLembretes.length == 0 ? <li>Você ainda não registrou nenhum lembrete.</li> :
               listaLembretes.map((lembrete)=>(
-                <ItemLembrete key={lembrete.id_consulta} especialidade={lembrete.especialidade} horario={lembrete.data_consulta.replace(':', 'h').replace(' ', ' às ')} canal='email' />
+                <ItemLembrete key={lembrete.id} especialidade={lembrete.especialidade} horario={lembrete.data_consulta.replace(':', 'h').replace(' ', ' às ')} canal='email' />
               ))
             }
           </ul>

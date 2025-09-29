@@ -216,7 +216,7 @@ def enviar_lembretes_pendentes():
             conn.close()
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=enviar_lembretes_pendentes, trigger="interval", minutes=10)
+scheduler.add_job(func=enviar_lembretes_pendentes, trigger="interval", minutes=1)
 scheduler.start()
 # Para garantir que o scheduler pare junto com o Flask
 atexit.register(lambda: scheduler.shutdown())

@@ -1,7 +1,7 @@
 export type tipoConsulta = {
-    id_consulta: number;
+    id: string;
     especialidade: string;
     data_consulta: string;
     status: boolean;
-    id_paciente: number;
+    id_paciente: string;
 }
