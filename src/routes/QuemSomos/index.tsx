@@ -6,6 +6,24 @@ import { RiTreasureMapFill } from 'react-icons/ri'
 import { FaGithub, FaHiking, FaLinkedin } from 'react-icons/fa'
 import dev1 from '../../assets/images/carrossel-template3.png'
 
+const textoHistoriaCC =
+           `Tudo começou com uma pergunta simples:
+            por que tantos pacientes faltam às consultas?
+
+            Descobrimos que não era por má vontade.
+            Muitos esquecem a data, não sabem como acessar a teleconsulta ou ficam inseguros em usar tecnologia.
+            Isso gera filas maiores, exames desperdiçados e médicos esperando sem poder atender.
+
+            Foi aí que pensamos:
+            E se existisse um canal simples, que lembrasse o paciente no momento certo e desse o passo a passo de forma clara e acessível?
+
+            Assim nasceu o Consulta Certa.
+
+            Uma plataforma feita para acolher o paciente desde antes da consulta, com lembretes, vídeos tutoriais, chatbot inclusivo e design pensado para ser usado por qualquer pessoa — seja no celular simples ou no computador.
+
+            O objetivo é um só:
+            diminuir o absenteísmo e garantir que mais pessoas recebam o atendimento que precisam, no tempo certo.`
+
 function QuemSomos () {
   return (
     <main>
@@ -16,13 +34,8 @@ function QuemSomos () {
             <h2 className='titulo-2'>A história por trás do Consulta Certa</h2>
             <Linha />
           </div>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores
-            impedit adipisci ullam pariatur totam quibusdam, nostrum corporis
-            itaque facilis id voluptatum rem omnis accusantium illum consequatur
-            labore incidunt optio minus quae fuga? Qui, a quisquam molestias
-            harum autem, alias voluptate maiores nulla doloribus sed inventore.
-            Ad soluta omnis voluptas temporibus.
+          <p className='texto-com-quebra'>
+            {textoHistoriaCC}
           </p>
         </div>
         <img src={quemSomosBanner} alt='' className='w-[30%] max-md:mb-[2vh]' />

@@ -9,12 +9,12 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from dotenv import load_dotenv
 
-# Carregar variáveis do arquivo .env
+#Carregar variáveis do arquivo .env
 load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# Config Oracle
+#Config Oracle
 USER = os.getenv("ORACLE_USER")
 PASSWORD = os.getenv("ORACLE_PASSWORD")
 HOST = os.getenv("ORACLE_HOST")
