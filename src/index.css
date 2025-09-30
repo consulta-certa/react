@@ -113,6 +113,10 @@
   }
 }
 
+.texto-com-quebra {
+  white-space: pre-line;
+}
+
 @theme {
   /* cores */
   --color-cc-azul: #1e77d0;

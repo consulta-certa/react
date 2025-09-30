@@ -4,7 +4,27 @@ import quemSomosBanner from '../../assets/images/carrossel-template3.png'
 import { TbTargetArrow } from 'react-icons/tb'
 import { RiTreasureMapFill } from 'react-icons/ri'
 import { FaGithub, FaHiking, FaLinkedin } from 'react-icons/fa'
-import dev1 from '../../assets/images/carrossel-template3.png'
+import dev1 from '../../assets/images/FelipeFerrete.jpeg'
+import dev2 from '../../assets/images/GustavoBosak.jpeg'
+import dev3 from '../../assets/images/NikolasBrisola.jpeg'
+
+const textoHistoriaCC =
+           `Tudo começou com uma pergunta simples:
+            por que tantos pacientes faltam às consultas?
+
+            Descobrimos que não era por má vontade.
+            Muitos esquecem a data, não sabem como acessar a teleconsulta ou ficam inseguros em usar tecnologia.
+            Isso gera filas maiores, exames desperdiçados e médicos esperando sem poder atender.
+
+            Foi aí que pensamos:
+            E se existisse um canal simples, que lembrasse o paciente no momento certo e desse o passo a passo de forma clara e acessível?
+
+            Assim nasceu o Consulta Certa.
+
+            Uma plataforma feita para acolher o paciente desde antes da consulta, com lembretes, vídeos tutoriais, chatbot inclusivo e design pensado para ser usado por qualquer pessoa — seja no celular simples ou no computador.
+
+            O objetivo é um só:
+            diminuir o absenteísmo e garantir que mais pessoas recebam o atendimento que precisam, no tempo certo.`
 
 function QuemSomos () {
   return (
@@ -16,13 +36,8 @@ function QuemSomos () {
             <h2 className='titulo-2'>A história por trás do Consulta Certa</h2>
             <Linha />
           </div>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores
-            impedit adipisci ullam pariatur totam quibusdam, nostrum corporis
-            itaque facilis id voluptatum rem omnis accusantium illum consequatur
-            labore incidunt optio minus quae fuga? Qui, a quisquam molestias
-            harum autem, alias voluptate maiores nulla doloribus sed inventore.
-            Ad soluta omnis voluptas temporibus.
+          <p className='texto-com-quebra'>
+            {textoHistoriaCC}
           </p>
         </div>
         <img src={quemSomosBanner} alt='' className='w-[30%] max-md:mb-[2vh]' />
@@ -65,7 +80,7 @@ function QuemSomos () {
           <Linha />
           <div>
             <h3 className='text-xl font-semibold'>Consulta Certa</h3>
-            <p>1TDSPF - ADSFIAP Paulista</p>
+            <p>1TDSPF - ADS FIAP Paulista</p>
           </div>
         </div>
         <ul className='flex max-md:flex-col justify-between items-center gap-4 w-2/3 min-w-[280px] min-h-[50vh]'>
@@ -75,46 +90,46 @@ function QuemSomos () {
             <p className='text-sm opacity-70'>RM562999</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
               <li>
-                <a href='https://github.com/'>
+                <a href='https://github.com/FelipeFerrete'>
                   <FaGithub />
                 </a>
               </li>
               <li>
-                <a href='https://linkedin.com/in/'>
+                <a href='https://www.linkedin.com/in/felipe-ferrete-ab63a318a'>
                   <FaLinkedin />
                 </a>
               </li>
             </ul>
           </li>
           <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
-            <img src={dev1} alt='' className='size-32 object-cover' />
+            <img src={dev2} alt='' className='size-32 object-cover' />
             <p className='mt-4'>Gustavo Bosak Santos</p>
             <p className='text-sm opacity-70'>RM566315</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
               <li>
-                <a href='https://github.com/'>
+                <a href='https://github.com/Gustavo-Bosak'>
                   <FaGithub />
                 </a>
               </li>
               <li>
-                <a href='https://linkedin.com/in/'>
+                <a href='https://www.linkedin.com/in/gustavo-bosak-santos'>
                   <FaLinkedin />
                 </a>
               </li>
             </ul>
           </li>
           <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
-            <img src={dev1} alt='' className='size-32 object-cover' />
+            <img src={dev3} alt='' className='size-32 object-cover' />
             <p className='mt-4'>Nikolas Henrique de Souza Lemes Brisola</p>
             <p className='text-sm opacity-70'>RM564371</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
               <li>
-                <a href='https://github.com/'>
+                <a href='https://github.com/NikolasBrisola'>
                   <FaGithub />
                 </a>
               </li>
               <li>
-                <a href='https://linkedin.com/in/'>
+                <a href='https://www.linkedin.com/in/nikolas-brisola-ab3588353'>
                   <FaLinkedin />
                 </a>
               </li>
