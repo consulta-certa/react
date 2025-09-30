@@ -45,10 +45,12 @@ npm run api
 E execute
 
 ```
-.\backend\venv\Scripts\activate
+cd backend
+venv\Scripts\activate
 python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
 Defina as variáveis de ambiente necessárias e em seguida execute o arquivo app.py
 
 ```

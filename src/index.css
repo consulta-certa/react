@@ -64,7 +64,7 @@
   }
 
   .botao {
-    @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 w-fit min-w-[150px] mt-[2vh] hover:bg-cc-azul-escuro;
+    @apply flex items-center justify-center gap-2 p-3 px-4 rounded-2xl bg-cc-azul text-lg text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh] hover:bg-cc-azul-escuro;
   }
 
   .form {
@@ -100,7 +100,7 @@
     }
 
     & button {
-      @apply p-4 rounded-2xl bg-cc-azul text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh] hover:bg-cc-azul-escuro;
+      @apply flex items-center justify-center gap-2 p-3 px-4 rounded-2xl bg-cc-azul text-lg text-white hover:scale-110 hover:font-bold transition-all ease-in duration-200 min-w-[150px] mt-[2vh] hover:bg-cc-azul-escuro;
     }
   }
 
@@ -110,6 +110,10 @@
 
   .detalhes-laterais {
     @apply before:content-[""] before:w-[2vw] before:h-4/5 before:bg-cc-cinza-escuro before:rounded-l-xl before:absolute before:-left-[2vw] after:content-[""] after:w-[2vw] after:h-4/5 after:bg-cc-cinza-escuro after:rounded-r-xl after:absolute after:-right-[2vw];
+  }
+
+  .before-bg {
+    @apply fixed before:content-[""] before:fixed before:w-[100vw] before:top-0 before:left-0 before:h-[100vh] before:bg-black/40 before:-z-10
   }
 }
 

@@ -5,8 +5,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "acompanhantes": [
-  ],
+  "acompanhantes": [],
   "avaliacoes": [
     {
       "id": "094e",
@@ -160,6 +159,28 @@
       "bairro": "Bela Vista",
       "cidade": "São Paulo",
       "cep": "01311-000"
+    },
+    {
+      "id": "acb6",
+      "nome": "Hospital das Clínicas",
+      "telefone": "(11) 2661-0000",
+      "email": "contato@hcfmusp.com.br",
+      "numero": "647",
+      "rua": "Av Doutor Eneas Carvalho de Aguiar",
+      "bairro": "Cerqueira César",
+      "cidade": "São Paulo",
+      "cep": "05403-901" 
+    },
+    {
+      "id": "eg5f",
+      "nome": "Fundação Faculdade de Medicina",
+      "telefone": "(11) 5023-7478",
+      "email": "contato@ffm.com.br",
+      "numero": "381",
+      "rua": "Av. Rebouças",
+      "bairro": "Cerqueira César",
+      "cidade": "São Paulo",
+      "cep": "05401-000"
     }
   ],
   "conteudos": [
@@ -282,6 +303,22 @@
       "nome": "aaaaaa",
       "telefone": "1112345678",
       "email": "a@bbbb.com",
+      "senha": "123456",
+      "acompanhante": false
+    },
+    {
+      "id": "c80a",
+      "nome": "nome",
+      "telefone": "1112345678",
+      "email": "e@mail.com",
+      "senha": "123456",
+      "acompanhante": true
+    },
+    {
+      "id": "4d8f",
+      "nome": "nommm",
+      "telefone": "1122345678",
+      "email": "e@email.com",
       "senha": "123456",
       "acompanhante": false
     }

@@ -52,14 +52,14 @@ function Contato() {
     }
 
     // Simulação apenas, para não enviar emails dispersos para o HC
-      const mensagem = {
-        nome: nome,
-        email: email,
-        assunto: assunto,
-        conteudo: conteudo
-      }
+    const mensagem = {
+      nome: nome,
+      email: email,
+      assunto: assunto,
+      conteudo: conteudo
+    }
 
-      console.log(mensagem)
+    console.log(mensagem)
     //
 
     setEnviado(true)
@@ -126,7 +126,7 @@ function Contato() {
             <button type='submit'>Enviar</button>
           </form>
         </section>
-        <section className='w-[50%] min-w-[280px]'>
+        <section className='w-[50%] max-lg:w-[100%] min-w-[280px]'>
           <div className='mb-[2vh]'>
             <h2 className='titulo-2'>Prefere outro jeito?</h2>
             <Linha />
@@ -145,7 +145,12 @@ function Contato() {
                       onClick={() =>
                         setIndiceAtual(prev => (prev + 1) % contatos.length)
                       }
-                      className='flex items-center rounded-4xl gap-2 p-2 sm:py-1 bg-cc-azul text-white text-sm hover:scale-105 hover:bg-cc-azul-escuro'
+                      className={`flex items-center rounded-4xl gap-2 p-2 sm:py-1 text-white text-sm
+                        ${contatos.length > 1 ?
+                          'bg-cc-azul hover:scale-105 hover:bg-cc-azul-escuro' :
+                          'bg-cc-cinza-escuro hover:scale-100 hover:bg-cc-cinza-escuro'
+                        }
+                      `}
                     >
                       <FaArrowAltCircleLeft />
                       <p className='inline max-sm:hidden'>Voltar</p>
@@ -154,11 +159,14 @@ function Contato() {
                   <li>
                     <button
                       onClick={() =>
-                        setIndiceAtual(
-                          prev => (prev - 1 + contatos.length) % contatos.length
-                        )
+                        setIndiceAtual(prev => (prev - 1 + contatos.length) % contatos.length)
                       }
-                      className='flex items-center rounded-4xl gap-2 p-2 sm:py-1 bg-cc-azul text-white text-sm hover:scale-105 hover:bg-cc-azul-escuro'
+                      className={`flex items-center rounded-4xl gap-2 p-2 sm:py-1 text-white text-sm
+                        ${contatos.length > 1 ?
+                          'bg-cc-azul hover:scale-105 hover:bg-cc-azul-escuro' :
+                          'bg-cc-cinza-escuro hover:scale-100 hover:bg-cc-cinza-escuro'
+                        }`
+                      }
                     >
                       <FaArrowAltCircleRight />
                       <p className='inline max-sm:hidden'>Avançar</p>
@@ -186,7 +194,7 @@ function Contato() {
                   <h3 className='text-lg font-semibold'>Endereço</h3>
                 </div>
                 <p>
-                  {`Rua ${contatos[indiceAtual].rua}, ${contatos[indiceAtual].numero}, ${contatos[indiceAtual].bairro}. ${contatos[indiceAtual].cidade} - SP. ${contatos[indiceAtual].cep.replace(/^(\d{5})(\d{3})$/, '$1-$2')}`}
+                  {`Rua ${contatos[indiceAtual].rua}, ${contatos[indiceAtual].numero} • ${contatos[indiceAtual].bairro}. ${contatos[indiceAtual].cidade} - SP. ${contatos[indiceAtual].cep.replace(/^(\d{5})(\d{3})$/, '$1-$2')}`}
                 </p>
               </li>
             </ul>

@@ -4,7 +4,7 @@ import Linha from '../../components/Linha/Linha'
 import { useEffect, useState } from 'react'
 import ItemFaq from '../../components/ItemFaq/ItemFaq'
 import type { tipoConteudo } from '../../types/tipoConteudo'
-const URL_CONTEUDO = import.meta.env.VITE_API_BASE_PRODUTO;
+const URL_CONTEUDO = import.meta.env.VITE_API_BASE_CONTEUDOS;
 
 function Ajuda () {
   const [faqs, setFaqs] = useState<tipoConteudo[]>([])
@@ -16,7 +16,7 @@ function Ajuda () {
       const data = await response.json();
       
 			const faqsSelecionadas = data.filter(
-        (conteudo: tipoConteudo) => conteudo.tipo === 'f'
+        (conteudo: tipoConteudo) => conteudo.tipo == 'f'
       )
       setFaqs(faqsSelecionadas)
 
