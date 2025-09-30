@@ -5,7 +5,24 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "acompanhantes": [],
+  "acompanhantes": [
+    {
+      "id": "3ead",
+      "nome": "acompa",
+      "telefone": "11922456789",
+      "email": "a@mail.com",
+      "parentesco": "filha",
+      "idPaciente": "02eb"
+    },
+    {
+      "id": "eb72",
+      "nome": "acompa",
+      "telefone": "11922456789",
+      "email": "a@mail.com",
+      "parentesco": "filha",
+      "idPaciente": "02eb"
+    }
+  ],
   "avaliacoes": [
     {
       "id": "094e",
@@ -169,7 +186,7 @@
       "rua": "Av Doutor Eneas Carvalho de Aguiar",
       "bairro": "Cerqueira César",
       "cidade": "São Paulo",
-      "cep": "05403-901" 
+      "cep": "05403-901"
     },
     {
       "id": "eg5f",
