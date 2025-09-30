@@ -4,7 +4,9 @@ import quemSomosBanner from '../../assets/images/carrossel-template3.png'
 import { TbTargetArrow } from 'react-icons/tb'
 import { RiTreasureMapFill } from 'react-icons/ri'
 import { FaGithub, FaHiking, FaLinkedin } from 'react-icons/fa'
-import dev1 from '../../assets/images/carrossel-template3.png'
+import dev1 from '../../assets/images/FelipeFerrete.jpeg'
+import dev2 from '../../assets/images/GustavoBosak.jpeg'
+import dev3 from '../../assets/images/NikolasBrisola.jpeg'
 
 const textoHistoriaCC =
            `Tudo começou com uma pergunta simples:
@@ -78,7 +80,7 @@ function QuemSomos () {
           <Linha />
           <div>
             <h3 className='text-xl font-semibold'>Consulta Certa</h3>
-            <p>1TDSPF - ADSFIAP Paulista</p>
+            <p>1TDSPF - ADS FIAP Paulista</p>
           </div>
         </div>
         <ul className='flex max-md:flex-col justify-between items-center gap-4 w-2/3 min-w-[280px] min-h-[50vh]'>
@@ -88,46 +90,46 @@ function QuemSomos () {
             <p className='text-sm opacity-70'>RM562999</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
               <li>
-                <a href='https://github.com/'>
+                <a href='https://github.com/FelipeFerrete'>
                   <FaGithub />
                 </a>
               </li>
               <li>
-                <a href='https://linkedin.com/in/'>
+                <a href='https://www.linkedin.com/in/felipe-ferrete-ab63a318a'>
                   <FaLinkedin />
                 </a>
               </li>
             </ul>
           </li>
           <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
-            <img src={dev1} alt='' className='size-32 object-cover' />
+            <img src={dev2} alt='' className='size-32 object-cover' />
             <p className='mt-4'>Gustavo Bosak Santos</p>
             <p className='text-sm opacity-70'>RM566315</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
               <li>
-                <a href='https://github.com/'>
+                <a href='https://github.com/Gustavo-Bosak'>
                   <FaGithub />
                 </a>
               </li>
               <li>
-                <a href='https://linkedin.com/in/'>
+                <a href='https://www.linkedin.com/in/gustavo-bosak-santos'>
                   <FaLinkedin />
                 </a>
               </li>
             </ul>
           </li>
           <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
-            <img src={dev1} alt='' className='size-32 object-cover' />
+            <img src={dev3} alt='' className='size-32 object-cover' />
             <p className='mt-4'>Nikolas Henrique de Souza Lemes Brisola</p>
             <p className='text-sm opacity-70'>RM564371</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
               <li>
-                <a href='https://github.com/'>
+                <a href='https://github.com/NikolasBrisola'>
                   <FaGithub />
                 </a>
               </li>
               <li>
-                <a href='https://linkedin.com/in/'>
+                <a href='https://www.linkedin.com/in/nikolas-brisola-ab3588353'>
                   <FaLinkedin />
                 </a>
               </li>
