@@ -123,12 +123,12 @@ function Home () {
         <h2 className='titulo-2'>Navegue por nossos serviços</h2>
         <ul className='flex w-[60vw] max-lg:w-[80vw] min-w-[280px] flex-wrap justify-center mt-[4vh] gap-x-[2%] gap-y-[4vh]'>
           <HomeButton
-            path='/guias/guia/:name'
+            path='/guias/'
             icon={BiSolidBookReader}
             label='Guia do aplicativo'
           />
           <HomeButton
-            path='/guias/guia/:name'
+            path='/guias/'
             icon={FaLaptopMedical}
             label='Como será sua consulta'
           />
