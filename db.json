@@ -120,49 +120,49 @@
       "id": "88fa",
       "especialidade": "fisioterapeuta",
       "data_consulta": "30/09/2025 11:00",
-      "status": true
+      "status": "A"
     },
     {
       "id": "88fa",
       "especialidade": "optometrista",
       "data_consulta": "09/10/2025 11:15",
-      "status": true
+      "status": "A"
     },
     {
       "id": "88fa",
       "especialidade": "neurologista",
       "data_consulta": "08/10/2025 11:20",
-      "status": true
+      "status": "A"
     },
     {
       "id": "88fa",
       "especialidade": "ortopedista",
       "data_consulta": "10/10/2025 12:25",
-      "status": true
+      "status": "A"
     },
     {
       "id": "e262",
       "especialidade": "fisioterapeuta",
       "data_consulta": "30/09/2025 10:06",
-      "status": true
+      "status": "A"
     },
     {
       "id": "ac6d",
       "especialidade": "fisioterapeuta",
       "data_consulta": "30/09/2025 10:18",
-      "status": true
+      "status": "A"
     },
     {
       "id": "88fa",
       "especialidade": "cardiologista",
       "data_consulta": "30/09/2025 10:39",
-      "status": true
+      "status": "A"
     },
     {
       "id": "88fa",
       "especialidade": "cardiologista",
       "data_consulta": "30/09/2025 10:39",
-      "status": true
+      "status": "A"
     }
   ],
   "contatos": [

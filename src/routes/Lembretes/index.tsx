@@ -59,7 +59,7 @@ function Lembretes() {
       const consultaPayload = {
         especialidade,
         data_consulta: formatarData(dataSelecionada),
-        status: true,
+        status: "A",
         id: paciente?.id
       }
 
