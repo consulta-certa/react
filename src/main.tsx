@@ -10,7 +10,6 @@ import Contato from './routes/Contato'
 import Erro from './routes/Erro'
 import Guia from './routes/Guia'
 import Home from './routes/Home'
-import Informacoes from './routes/Informacoes'
 import Lembretes from './routes/Lembretes'
 import Perfil from './routes/Perfil'
 import QuemSomos from './routes/QuemSomos'
@@ -32,7 +31,6 @@ const router = createBrowserRouter([
       { path: '/entrar', element: <Entrada /> },
       { path: '/guias/guia/:name', element: <Guia /> },
       { path: '/', element: <Home /> },
-      { path: '/informacoes/:id', element: <Informacoes /> },
       { path: '/lembretes', element: <Lembretes /> },
       { path: '/guias', element: <ListaGuias /> },
       { path: '/perfil', element: <Perfil /> },

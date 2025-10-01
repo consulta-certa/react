@@ -44,7 +44,7 @@ function Header () {
           <NavElement path='/perfil' icon={IoPersonCircle} label='Perfil' />
         </ul>
       </nav>
-      <nav className='hidden max-lg:block fixed left-0 bottom-0 w-full px-[2vw] z-1000 h-[12vh] text-lg'>
+      <nav className='hidden max-lg:block fixed left-0 bottom-0 w-full px-[2vw] z-1000 h-[12vh] text-lg max-md:pr-[25vw]'>
         <ul className='flex w-full justify-evenly h-full gap-4 ml-[1vw]'>
           <NavElement path='/' icon={AiFillHome} label='Início' />
           <NavElement path='/guias' icon={BiSolidBookReader} label='Guias' />
