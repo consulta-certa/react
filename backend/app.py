@@ -76,13 +76,15 @@ def set_reminder():
         else:
             id_paciente = get_next_id(conn, "pacientes", "id_paciente")
             cursor.execute("""
-                INSERT INTO pacientes (id_paciente, nome, email, telefone)
-                VALUES (:id_paciente, :nome, :email, :telefone)
+                INSERT INTO pacientes (id_paciente, nome, email, telefone, acompanhante, senha)
+                VALUES (:id_paciente, :nome, :email, :telefone,:acompanhante, :senha)
             """, {
                 "id_paciente": id_paciente,
                 "nome": nome,
                 "email": email,
-                "telefone": telefone or ""
+                "telefone": telefone or "",
+                 "senha": "senha_padrao", # or senha - Pegar futuro senha no Json
+                 "acompanhante": "S"
             })
     
         # 2. Inserir consulta
@@ -103,12 +105,10 @@ def set_reminder():
             id_lembrete = get_next_id(conn, "lembretes", "id_lembrete")
             data_envio = data_consulta - timedelta(hours=horas)
             cursor.execute("""
-                INSERT INTO lembretes (id_lembrete, email, telefone, data_envio, id_consulta)
-                VALUES (:id_lembrete, :email, :telefone, :data_envio, :id_consulta)
+                INSERT INTO lembretes (id_lembrete, data_envio, id_consulta)
+                VALUES (:id_lembrete, :data_envio, :id_consulta)
             """, {
                  "id_lembrete": id_lembrete,
-                 "email": email,
-                 "telefone": telefone,
                  "data_envio": data_envio,
                  "id_consulta": id_consulta
             })
@@ -180,8 +180,8 @@ def enviar_lembretes_pendentes():
 
         # Buscar lembretes com data_envio <= agora e que ainda não foram enviados e o nome do paciente
         cursor.execute("""
-            SELECT l.id_lembrete, l.email, l.data_envio, l.id_consulta, 
-                   c.data_consulta, p.nome
+            SELECT l.id_lembrete, p.email, l.data_envio, l.id_consulta, 
+                c.data_consulta, p.nome
             FROM lembretes l
             JOIN consultas c ON l.id_consulta = c.id_consulta
             JOIN pacientes p ON c.id_paciente = p.id_paciente
@@ -216,7 +216,7 @@ def enviar_lembretes_pendentes():
 
 # Scheduler para verificar lembretes pendentes a cada minuto
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=enviar_lembretes_pendentes, trigger="interval", minutes=1)
+scheduler.add_job(func=enviar_lembretes_pendentes, trigger="interval", minutes=10)
 scheduler.start()
 
 # Para garantir que o scheduler pare junto com o Flask
