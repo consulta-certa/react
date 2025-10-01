@@ -40,25 +40,25 @@ function ListaGuias () {
       <h2 className='titulo-2'>Qual tipo de ajuda você gostaria?</h2>
 
       <section className='flex max-md:flex-col justify-between min-w-[280px] px-[1vw] mt-[2vh]'>
-        <div className='flex items-center flex-col gap-[2vh]'>
+        <div className='flex items-center max-md:items-end flex-col max-md:flex-row gap-[2vh] max-md:gap-[2vw] md:mt-[1vh] max-md:px-[2vw]'>
           <button
-            className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${
-              categoria == 1 ? 'bg-cc-cinza' : 'bg-cc-azul'
+            className={`text-xl max-md:text-md font-semibold text-center w-full p-4 md:rounded-l-xl max-md:rounded-t-xl transition-all ease-in duration-200 cursor-pointer ${
+              categoria == 1 ? 'bg-cc-cinza' : 'bg-cc-azul text-white font-bold scale-105'
             }`}
             onClick={() => setCategoria(0)}
           >
             Portal do Paciente HC
           </button>
           <button
-            className={`text-xl max-md:text-md font-semibold text-center w-full p-4 rounded-l-xl hover:translate-x-4 transition-all ease-in duration-200 ${
-              categoria == 0 ? 'bg-cc-cinza' : 'bg-cc-azul'
+            className={`text-xl max-md:text-md font-semibold text-center w-full p-4 md:rounded-l-xl max-md:rounded-t-xl transition-all ease-in duration-200 cursor-pointer ${
+              categoria == 0 ? 'bg-cc-cinza' : 'bg-cc-azul text-white font-bold scale-105'
             }`}
             onClick={() => setCategoria(1)}
           >
             Teleconsulta
           </button>
         </div>
-        <ul className='flex flex-col items-center bg-cc-azul px-8 h-[44vh] py-4 overflow-y-scroll gap-[2vh]'>
+        <ul className='flex flex-col items-center rounded-lg bg-cc-azul px-8 h-[44vh] py-4 overflow-y-scroll gap-[2vh]'>
           {(categoria == 0 ? guiasPortal : guiasTeleconsulta).map(guia => (
             <ItemLista
               path={converterPath(guia.titulo)}

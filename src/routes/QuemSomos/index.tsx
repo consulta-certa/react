@@ -84,8 +84,8 @@ function QuemSomos () {
           </div>
         </div>
         <ul className='flex max-md:flex-col justify-between items-center gap-4 w-2/3 min-w-[280px] min-h-[50vh]'>
-          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
-            <img src={dev1} alt='' className='size-32 object-cover' />
+          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%] max-md:w-[80%]'>
+            <img src={dev1} alt='Foto do desenvolvedor Felipe Ferrete Soares Lemes' className='size-32 object-cover' />
             <p className='mt-4'>Felipe Ferrete Soares Lemes</p>
             <p className='text-sm opacity-70'>RM562999</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
@@ -101,8 +101,8 @@ function QuemSomos () {
               </li>
             </ul>
           </li>
-          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
-            <img src={dev2} alt='' className='size-32 object-cover' />
+          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%] max-md:w-[80%]'>
+            <img src={dev2} alt='Foto do desenvolvedor Gustavo Bosak Santos' className='size-32 object-cover' />
             <p className='mt-4'>Gustavo Bosak Santos</p>
             <p className='text-sm opacity-70'>RM566315</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
@@ -118,8 +118,8 @@ function QuemSomos () {
               </li>
             </ul>
           </li>
-          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%]'>
-            <img src={dev3} alt='' className='size-32 object-cover' />
+          <li className='flex flex-col items-center justify-center p-4 rounded-2xl bg-cc-cinza-escuro min-h-[40vh] text-center basis-[30%] max-md:w-[80%]'>
+            <img src={dev3} alt='Foto do desenvolvedor Nikolas Henrique de Souza Lemes Brisola' className='size-32 object-cover' />
             <p className='mt-4'>Nikolas Henrique de Souza Lemes Brisola</p>
             <p className='text-sm opacity-70'>RM564371</p>
             <ul className='flex gap-4 mt-4 text-2xl'>
