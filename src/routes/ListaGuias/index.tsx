@@ -17,12 +17,12 @@ function ListaGuias () {
       const data = await response.json()
 
       const guiasPortalSelecionados = data.filter(
-        (conteudo: tipoConteudo) => conteudo.tipo === 'gp'
+        (conteudo: tipoConteudo) => conteudo.tipo === 'p'
       )
       setGuiasPortal(guiasPortalSelecionados)
 
       const guiasTeleconsultaSelecionados = data.filter(
-        (conteudo: tipoConteudo) => conteudo.tipo === 'gt'
+        (conteudo: tipoConteudo) => conteudo.tipo === 't'
       )
       setGuiasTeleconsulta(guiasTeleconsultaSelecionados)
     } catch {

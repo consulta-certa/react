@@ -209,7 +209,7 @@
   "conteudos": [
     {
       "id": "a477",
-      "tipo": "gp",
+      "tipo": "p",
       "titulo": "Como mudar minha senha no Portal HC",
       "texto": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa placeat omnis eum perspiciatis porro quae recusandae nisi reprehenderit magni ipsam ab veritatis excepturi quibusdam sit, totam odio eveniet quia fugiat?\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quibusdam sunt necessitatibus dolores repudiandae nemo, consequuntur quaerat temporibus eos dolorem!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, corrupti cumque deleniti quod quaerat ut provident porro velit. Consequuntur, repellendus?",
       "video": "tutorial-gov-template.mp4",
@@ -218,7 +218,7 @@
     },
     {
       "id": "d5cd",
-      "tipo": "gp",
+      "tipo": "p",
       "titulo": "Como fazer login pelo gov.br no Portal HC",
       "texto": "Bem-vindo ao Consulta Certa, uma plataforma parceira que ajuda os pacientes do Hospital das Clínicas a se prepararem para consultas e exames. Neste vídeo, você vai aprender como acessar sua conta de forma simples e segura.\nNa tela inicial, clique no botão Entrar com GOV.br. Esse é o caminho oficial e seguro para acessar seus serviços de saúde. Digite o seu CPF e avance para a próxima etapa. Agora, digite a sua senha do GOV.br.\nSe você já possui cadastro, basta inserir sua senha para entrar. Se você não lembra a senha, clique em Esqueci minha senha.\nVocê poderá escolher entre três formas de recuperação. Reconhecimento facial pelo celular. Forma mais rápida e segura. E-mail cadastrado. Telefone celular. Se tiver dúvidas, peça ajuda a um familiar ou na própria recepção do hospital. O importante é que você consiga acessar e cuidar da sua saúde sem dificuldades.",
       "video": "tutorial-gov-template.mp4",
@@ -227,7 +227,7 @@
     },
     {
       "id": "d99a",
-      "tipo": "gt",
+      "tipo": "t",
       "titulo": "Como acessar minha teleconsulta",
       "texto": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa placeat omnis eum perspiciatis porro quae recusandae nisi reprehenderit magni ipsam ab veritatis excepturi quibusdam sit, totam odio eveniet quia fugiat?\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae quibusdam sunt necessitatibus dolores repudiandae nemo, consequuntur quaerat temporibus eos dolorem!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, corrupti cumque deleniti quod quaerat ut provident porro velit. Consequuntur, repellendus?",
       "video": "tutorial-gov-template.mp4",
