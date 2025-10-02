@@ -116,4 +116,4 @@ react/
 ## 🔗 Links do Projeto
 🌐 Aplicação Online: <a href='https://consulta-certa-dusky.vercel.app' target='_'>Consulta Certa</a>
 
-▶️ Vídeo no YouTube: <a href='https://youtube.com/' target='_'>Apresentação do site</a>
+▶️ Vídeo no YouTube: <a href='https://youtu.be/mXoOLKdYTPg' target='_'>Apresentação do site</a>
