@@ -163,6 +163,12 @@
       "especialidade": "cardiologista",
       "data_consulta": "30/09/2025 10:39",
       "status": "A"
+    },
+    {
+      "id": "f9b4",
+      "especialidade": "cardiologista",
+      "data_consulta": "02/10/2025 12:00",
+      "status": "A"
     }
   ],
   "contatos": [
@@ -393,6 +399,14 @@
       "telefone": "55123432123",
       "email": "dsa@rtew.csa",
       "senha": "dsa@rtew.csa",
+      "acompanhante": false
+    },
+    {
+      "id": "f9b4",
+      "nome": "Nikolas",
+      "telefone": "11990000000",
+      "email": "nik.brisola@gmail.com",
+      "senha": "246810",
       "acompanhante": false
     }
   ]
