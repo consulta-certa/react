@@ -73,6 +73,12 @@ O projeto utiliza ícones e imagens organizados na pasta `public/media/` e em `s
 
 ---
 
+## ⚠️ Importante
+
+Por conta do funcionamento interno da API VLibras, ela só é habilitada normalmente em deploy. Acesse o link da página no vercel para testá-la.
+
+---
+
 ## 📂 Estrutura de diretórios
 ```
 react/
